@@ -1,0 +1,481 @@
+<!-- test-embed.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luminary AI | Next-Gen Customer Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #6366f1;
+        --primary-hover: #4f46e5;
+        --secondary: #94a3b8;
+        --dark: #0f172a;
+        --light-bg: #f8fafc;
+        --white: #ffffff;
+        --border: #e2e8f0;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        line-height: 1.6;
+        color: var(--text-main);
+        background-color: var(--white);
+        overflow-x: hidden;
+      }
+
+      /* Navbar */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 8%;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+      }
+
+      .logo-icon {
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(135deg, var(--primary), #a855f7);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 800;
+        font-size: 1.2rem;
+      }
+
+      .logo-text {
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--dark);
+        letter-spacing: -0.03em;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-weight: 600;
+        transition: all 0.2s;
+        font-size: 0.95rem;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: 10px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+        text-decoration: none;
+        font-display: white;
+        display: inline-block;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+        color: var(--white);
+        border: none;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 10rem 8% 8rem;
+        text-align: center;
+        background: 
+          radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
+          radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.05) 0%, transparent 40%);
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 0.5rem 1.25rem;
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--primary);
+        border-radius: 100px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        font-size: 4.5rem;
+        font-weight: 800;
+        margin-bottom: 2rem;
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        background: linear-gradient(135deg, var(--dark) 0%, #475569 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero p {
+        font-size: 1.4rem;
+        color: var(--text-muted);
+        max-width: 700px;
+        margin: 0 auto 3rem;
+        line-height: 1.6;
+      }
+
+      /* Features */
+      .features {
+        padding: 8rem 8%;
+        background-color: var(--light-bg);
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 5rem;
+      }
+
+      .section-header h2 {
+        font-size: 2.75rem;
+        font-weight: 800;
+        margin-bottom: 1.25rem;
+        letter-spacing: -0.03em;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2.5rem;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+
+      .card {
+        background: var(--white);
+        padding: 3.5rem;
+        border-radius: 24px;
+        border: 1px solid var(--border);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05);
+        border-color: var(--primary);
+      }
+
+      .card-icon {
+        width: 64px;
+        height: 64px;
+        background: rgba(99, 102, 241, 0.08);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+        color: var(--primary);
+      }
+
+      .card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1.25rem;
+      }
+
+      .card p {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+      }
+
+      /* Stats */
+      .stats-container {
+        padding: 4rem 8%;
+        background: var(--dark);
+        border-radius: 40px;
+        margin: 4rem 8%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        color: white;
+        text-align: center;
+      }
+
+      .stat-item h4 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .stat-item p {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--secondary);
+      }
+
+      /* Footer */
+      footer {
+        padding: 6rem 8% 4rem;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 4rem;
+      }
+
+      .footer-brand {
+        max-width: 300px;
+      }
+
+      .footer-brand p {
+        margin-top: 1.5rem;
+        color: var(--text-muted);
+      }
+
+      .footer-nav {
+        display: flex;
+        gap: 5rem;
+      }
+
+      .footer-col h5 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-col ul {
+        list-style: none;
+      }
+
+      .footer-col ul li {
+        margin-bottom: 0.75rem;
+      }
+
+      .footer-col ul li a {
+        text-decoration: none;
+        color: var(--text-muted);
+        transition: color 0.2s;
+        font-size: 0.95rem;
+      }
+
+      .footer-col ul li a:hover {
+        color: var(--primary);
+      }
+
+      /* Widget Launcher */
+      #my-chat-icon {
+        position: fixed;
+        bottom: 2.5rem;
+        right: 2.5rem;
+        background: linear-gradient(135deg, var(--primary), #a855f7);
+        color: var(--white);
+        width: 72px;
+        height: 72px;
+        border-radius: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        cursor: pointer;
+        border: none;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 9999;
+      }
+
+      #my-chat-icon:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
+      }
+
+      @media (max-width: 1024px) {
+        .hero h1 { font-size: 3.5rem; }
+        .stats-container { grid-template-columns: repeat(2, 1fr); gap: 4rem; }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 { font-size: 2.75rem; }
+        .nav-links { display: none; }
+        .stats-container { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="#" class="logo-container">
+        <div class="logo-icon">C</div>
+        <div class="logo-text">Customer Support</div>
+      </a>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <span class="badge">New: GPT-4o Integration is Live</span>
+        <h1>Scale Your Support Without Scaling Your Team</h1>
+        <p>
+          Luminary AI orchestrates your entire customer journey with autonomous 
+          intelligence that learns from your documentation in seconds.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center;">
+          <a href="#" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+            Get Started Now
+          </a>
+          <a href="#" class="btn" style="padding: 1rem 2.5rem; font-size: 1.1rem; border: 1px solid var(--border);">
+            View Pricing
+          </a>
+        </div>
+      </section>
+
+      <section class="stats-container">
+        <div class="stat-item">
+          <h4>99%</h4>
+          <p>CSAT Score</p>
+        </div>
+        <div class="stat-item">
+          <h4>1.2s</h4>
+          <p>Response Time</p>
+        </div>
+        <div class="stat-item">
+          <h4>85%</h4>
+          <p>Automation Rate</p>
+        </div>
+        <div class="stat-item">
+          <h4>24/7</h4>
+          <p>Instant Support</p>
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="section-header">
+          <h2>Engineered for Excellence</h2>
+          <p style="color: var(--text-muted); font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+            Experience the most advanced AI infrastructure designed specifically for modern support teams.
+          </p>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <div class="card-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+              </svg>
+            </div>
+            <h3>Autonomous Rag</h3>
+            <p>Our proprietary RAG engine indexes your knowledge base in real-time, delivering hyper-accurate answers without manual training.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <h3>Bank-Grade Security</h3>
+            <p>SOC2 Type II compliant. We encrypt every interaction and offer strict data residency controls for enterprise requirements.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3>Lightning Fast</h3>
+            <p>Built on a global edge network, Luminary AI delivers responses in under 2 seconds, regardless of where your customers are.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-brand">
+        <a href="#" class="logo-container" style="margin-bottom: 1.5rem;">
+          <div class="logo-icon">L</div>
+          <div class="logo-text">Luminary.ai</div>
+        </a>
+        <p>The operating system for modern customer intelligence. Trusted by 500+ high-growth companies.</p>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="#">Platform</a></li>
+            <li><a href="#">Integrations</a></li>
+            <li><a href="#">Roadmap</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Security</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Widget Launcher -->
+    <button id="my-chat-icon" aria-label="Open support chat">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a4 4 0 01-4 4H8l-5 3V7a4 4 0 014-4h10a4 4 0 014 4v8z" />
+      </svg>
+    </button>
+
+    <script
+      src="/widget-loader.js"
+      data-api-key="636b3b3e-b90b-450d-b7f7-bf2438985a55"
+      data-launcher-id="my-chat-icon"
+    ></script>
+  </body>
+</html>
