@@ -18,14 +18,16 @@ export default function Header() {
             className="w-9 h-9 rounded-xl object-cover bg-white/20 backdrop-blur-sm"
           />
         ) : (
-          <div className="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center text-white font-semibold text-sm">
-            SA
-          </div>
+          <img
+            src="/logo.png"
+            alt="SupportConnectAI Logo"
+            className="w-9 h-9 rounded-xl object-cover bg-white/20 backdrop-blur-sm"
+          />
         )}
 
         <div className="flex flex-col text-white">
           <span className="font-semibold text-sm leading-tight">
-            Support Assistant
+            SupportConnectAI
           </span>
 
           <div className="flex items-center gap-2 text-xs opacity-90">

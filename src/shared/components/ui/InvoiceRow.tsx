@@ -4,7 +4,7 @@ export default function InvoiceRow({ inv }: { inv: any }) {
   return (
     <tr className="border-b text-sm">
       <td className="py-2">{inv.date}</td>
-      <td>${inv.amount}</td>
+      <td>₹{inv.amount}</td>
       <td
         className={`${
           inv.status === "paid"

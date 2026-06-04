@@ -37,11 +37,13 @@ export default function AgentLayout() {
         {/* Brand/Logo */}
         <div className="px-8 py-8">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-500/20">
-              <ShieldCheck className="w-6 h-6" />
-            </div>
+            <img
+              src="/logo.png"
+              alt="SupportConnectAI Logo"
+              className="w-10 h-10 rounded-xl object-cover shadow-lg shadow-blue-500/20"
+            />
             <div>
-              <h1 className="text-xl font-black text-gray-900 tracking-tight">SupportCenter</h1>
+              <h1 className="text-xl font-black text-gray-900 tracking-tight">SupportConnectAI</h1>
               <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest">Agent Portal</span>
             </div>
           </div>

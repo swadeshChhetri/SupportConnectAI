@@ -36,11 +36,13 @@ export default function PlatformAdminLayout() {
         {/* Brand/Logo */}
         <div className="px-8 py-10">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-indigo-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-500/40 transform rotate-3">
-              <ShieldAlert className="w-6 h-6" />
-            </div>
+            <img
+              src="/logo.png"
+              alt="SupportConnectAI Logo"
+              className="w-10 h-10 rounded-xl object-cover shadow-lg shadow-indigo-500/40 transform rotate-3"
+            />
             <div>
-              <h1 className="text-xl font-black tracking-tight">SupportOS</h1>
+              <h1 className="text-xl font-black tracking-tight">SupportConnectAI</h1>
               <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-[0.2em]">Platform Admin</span>
             </div>
           </div>

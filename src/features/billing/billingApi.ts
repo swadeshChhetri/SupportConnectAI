@@ -31,20 +31,37 @@ const mockPlans: Plan[] = [
   {
     id: "starter",
     name: "Starter",
-    price: 19,
-    features: ["200 AI messages", "2 agents", "Basic analytics"],
+    price: 2499,
+    features: [
+      "500 replies / month",
+      "Upload up to 10 documents",
+      "Basic AI Agent resolution",
+      "Email support",
+    ],
   },
   {
-    id: "pro",
-    name: "Pro",
-    price: 49,
-    features: ["Unlimited messages", "10 agents", "Advanced analytics"],
+    id: "growth",
+    name: "Growth",
+    price: 7999,
+    features: [
+      "5,000 replies / month",
+      "Upload up to 100 documents",
+      "Advanced AI Agent resolution",
+      "Slack & email support",
+      "Advanced analytics desk",
+    ],
   },
   {
     id: "enterprise",
     name: "Enterprise",
-    price: 149,
-    features: ["Unlimited everything", "Priority support", "Custom integrations"],
+    price: 15999,
+    features: [
+      "Unlimited AI replies / month",
+      "Unlimited document uploads",
+      "Custom model training & SLAs",
+      "Dedicated support manager",
+      "Organization data isolation",
+    ],
   },
 ];
 
@@ -54,9 +71,9 @@ let mockSubscription: Subscription = {
   renewsOn: new Date(Date.now() + 7 * 86400000).toISOString(),
   usage: {
     chatsUsed: 120,
-    chatsLimit: 200,
+    chatsLimit: 500,
     docsUsed: 5,
-    docsLimit: 20,
+    docsLimit: 10,
     agentsUsed: 1,
     agentsLimit: 2,
   },
@@ -65,15 +82,15 @@ let mockSubscription: Subscription = {
 let mockInvoices: Invoice[] = [
   {
     id: "inv1",
-    date: "2025-02-01",
-    amount: 19,
+    date: "2026-05-01",
+    amount: 2499,
     status: "paid",
     pdfUrl: "/invoice1.pdf",
   },
   {
     id: "inv2",
-    date: "2025-01-01",
-    amount: 19,
+    date: "2026-04-01",
+    amount: 2499,
     status: "paid",
     pdfUrl: "/invoice2.pdf",
   },

@@ -16,7 +16,7 @@ export default function PlanCard({
       }`}
     >
       <h3 className="text-xl font-semibold">{plan.name}</h3>
-      <p className="text-gray-500 mt-1">${plan.price}/month</p>
+      <p className="text-gray-500 mt-1">₹{plan.price}/month</p>
 
       <ul className="mt-4 space-y-2 text-sm">
         {plan.features.map((f: string, i: number) => (

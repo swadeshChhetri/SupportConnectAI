@@ -1,0 +1,3188 @@
+<!-- test-embed.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <title>SupportConnectAI | Next-Gen Customer Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #6366f1;
+        --primary-hover: #4f46e5;
+        --secondary: #94a3b8;
+        --dark: #0f172a;
+        --light-bg: #f8fafc;
+        --white: #ffffff;
+        --border: #e2e8f0;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        line-height: 1.6;
+        color: var(--text-main);
+        background-color: var(--white);
+        overflow-x: hidden;
+      }
+
+      /* Navbar */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 8%;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+      }
+
+      .logo-icon {
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(135deg, var(--primary), #a855f7);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 800;
+        font-size: 1.2rem;
+      }
+
+      .logo-text {
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--dark);
+        letter-spacing: -0.03em;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-weight: 600;
+        transition: all 0.2s;
+        font-size: 0.95rem;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      /* Specific button text color overrides in navbar */
+      .nav-links a.btn-primary {
+        color: var(--white);
+      }
+      .nav-links a.btn-primary:hover {
+        color: var(--white);
+      }
+      .nav-links a.btn-secondary {
+        color: var(--text-main);
+      }
+
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: 10px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+        text-decoration: none;
+        font-display: white;
+        display: inline-block;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+        color: var(--white);
+        border: none;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+      }
+
+      .btn-secondary {
+        background: var(--white);
+        color: var(--text-main);
+        border: 1px solid var(--border);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+      }
+
+      .btn-secondary:hover {
+        background: var(--light-bg);
+        border-color: var(--text-muted);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .hero-ctas {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 8rem 8% 6rem;
+        background: 
+          radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
+          radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.05) 0%, transparent 40%);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 4rem;
+        align-items: center;
+        max-width: 1300px;
+        margin: 0 auto;
+        text-align: left;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 0.5rem 1.25rem;
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--primary);
+        border-radius: 100px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        font-size: 3.8rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+        letter-spacing: -0.04em;
+        background: linear-gradient(135deg, var(--dark) 0%, #475569 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        color: var(--text-muted);
+        margin-bottom: 2.5rem;
+        line-height: 1.6;
+      }
+
+      /* Features */
+      .features {
+        padding: 8rem 8%;
+        background-color: var(--light-bg);
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 5rem;
+      }
+
+      .section-header h2 {
+        font-size: 2.75rem;
+        font-weight: 800;
+        margin-bottom: 1.25rem;
+        letter-spacing: -0.03em;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2.5rem;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+
+      .card {
+        background: var(--white);
+        padding: 3.5rem;
+        border-radius: 24px;
+        border: 1px solid var(--border);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05);
+        border-color: var(--primary);
+      }
+
+      .card-icon {
+        width: 64px;
+        height: 64px;
+        background: rgba(99, 102, 241, 0.08);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+        color: var(--primary);
+      }
+
+      .card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1.25rem;
+      }
+
+      .card p {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+      }
+
+      /* Stats */
+      .stats-container {
+        padding: 4rem 8%;
+        background: var(--dark);
+        border-radius: 40px;
+        margin: 4rem 8%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        color: white;
+        text-align: center;
+      }
+
+      .stat-item h4 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .stat-item p {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--secondary);
+      }
+
+      /* Footer */
+      footer {
+        padding: 6rem 8% 4rem;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 4rem;
+      }
+
+      .footer-brand {
+        max-width: 300px;
+      }
+
+      .footer-brand p {
+        margin-top: 1.5rem;
+        color: var(--text-muted);
+      }
+
+      .footer-nav {
+        display: flex;
+        gap: 5rem;
+      }
+
+      .footer-col h5 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-col ul {
+        list-style: none;
+      }
+
+      .footer-col ul li {
+        margin-bottom: 0.75rem;
+      }
+
+      .footer-col ul li a {
+        text-decoration: none;
+        color: var(--text-muted);
+        transition: color 0.2s;
+        font-size: 0.95rem;
+      }
+
+      .footer-col ul li a:hover {
+        color: var(--primary);
+      }
+
+      /* Widget Launcher */
+      #my-chat-icon {
+        position: fixed;
+        bottom: 2.5rem;
+        right: 2.5rem;
+        background: linear-gradient(135deg, var(--primary), #a855f7);
+        color: var(--white);
+        width: 72px;
+        height: 72px;
+        border-radius: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        cursor: pointer;
+        border: none;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 9999;
+      }
+
+      #my-chat-icon:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
+      }
+
+      /* Workflow Visual Styles */
+      .workflow-visual {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .workflow-card {
+        background: #0f172a;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+        padding: 2rem;
+        width: 100%;
+        max-width: 480px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 40px rgba(99, 102, 241, 0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        position: relative;
+      }
+
+      .workflow-step {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .workflow-step:hover {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(99, 102, 241, 0.3);
+      }
+
+      .workflow-step.active {
+        background: rgba(99, 102, 241, 0.08);
+        border-color: var(--primary);
+        box-shadow: 0 0 15px rgba(99, 102, 241, 0.15);
+      }
+
+      .step-icon {
+        width: 36px;
+        height: 36px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #94a3b8;
+        flex-shrink: 0;
+      }
+
+      .workflow-step.active .step-icon {
+        background: var(--primary);
+        color: white;
+      }
+
+      .step-icon.ai-icon {
+        background: linear-gradient(135deg, var(--primary), #a855f7);
+        color: white;
+      }
+
+      .step-icon.question-icon {
+        background: rgba(56, 189, 248, 0.1);
+        color: #38bdf8;
+      }
+
+      .step-icon.ticket-icon {
+        background: rgba(245, 158, 11, 0.1);
+        color: #f59e0b;
+      }
+
+      .step-icon.agent-icon {
+        background: rgba(16, 185, 129, 0.1);
+        color: #10b981;
+      }
+
+      .step-details h4 {
+        color: white;
+        font-size: 0.85rem;
+        font-weight: 700;
+        margin-bottom: 0.1rem;
+      }
+
+      .step-details p {
+        color: #94a3b8;
+        font-size: 0.72rem;
+        margin: 0 !important;
+        line-height: 1.3;
+      }
+
+      .workflow-connector {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 24px;
+        position: relative;
+        justify-content: center;
+      }
+
+      .connector-line {
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+      }
+
+      .workflow-step.active + .workflow-connector .connector-line {
+        background: linear-gradient(to bottom, var(--primary), rgba(255, 255, 255, 0.05));
+      }
+
+      .connector-arrow {
+        width: 6px;
+        height: 6px;
+        border-right: 2px solid rgba(255, 255, 255, 0.15);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+        transform: rotate(45deg);
+        position: absolute;
+        bottom: 2px;
+      }
+
+      .option-connector {
+        height: 32px;
+      }
+
+      .option-connector .branch-line {
+        border-left: 2px dashed rgba(245, 158, 11, 0.3);
+        width: 0;
+        height: 100%;
+        background: none;
+      }
+
+      .connector-text {
+        position: absolute;
+        background: #0f172a;
+        padding: 0 0.5rem;
+        color: #f59e0b;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .chat-bubble-popup {
+        position: absolute;
+        right: -20px;
+        top: -15px;
+        background: #1e293b;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 0.35rem 0.6rem;
+        color: white;
+        font-size: 0.7rem;
+        font-weight: 600;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        animation: floatBubble 3s ease-in-out infinite;
+      }
+
+      .pulse-dot {
+        width: 5px;
+        height: 5px;
+        background: #10b981;
+        border-radius: 50%;
+        animation: pulse 1.5s infinite;
+      }
+
+      @keyframes floatBubble {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-4px); }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+        }
+        70% {
+          transform: scale(1);
+          box-shadow: 0 0 0 4px rgba(16, 185, 129, 0);
+        }
+        100% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .hero h1 { font-size: 3.2rem; }
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+          text-align: center;
+        }
+        .hero-ctas {
+          justify-content: center;
+        }
+        .workflow-visual {
+          margin-top: 2rem;
+        }
+        .stats-container { grid-template-columns: repeat(2, 1fr); gap: 4rem; }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 { font-size: 2.5rem; }
+        .nav-links { display: none; }
+        .stats-container { grid-template-columns: 1fr; }
+      }
+
+      /* Problem Section Styles */
+      .problem-section {
+        padding: 8rem 8%;
+        background-color: var(--light-bg);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .problem-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+
+      .problem-card {
+        background: var(--white);
+        padding: 3rem 2.5rem;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .problem-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px -10px rgba(239, 68, 68, 0.08);
+        border-color: #f43f5e;
+      }
+
+      .problem-icon {
+        width: 52px;
+        height: 52px;
+        background: rgba(244, 63, 94, 0.1);
+        color: #f43f5e;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.75rem;
+      }
+
+      .problem-card h3 {
+        font-size: 1.35rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--dark);
+      }
+
+      .problem-card p {
+        color: var(--text-muted);
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      @media (max-width: 1024px) {
+        .problem-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+      }
+      /* How It Works Section */
+      .how-it-works {
+        padding: 8rem 8%;
+        background-color: var(--white);
+        position: relative;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .how-container {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 4rem;
+        max-width: 1300px;
+        margin: 4rem auto 0;
+        align-items: flex-start;
+      }
+
+      .how-steps-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .how-step-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        padding: 1.75rem;
+        background: var(--light-bg);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-align: left;
+        position: relative;
+      }
+
+      .how-step-item:hover {
+        border-color: rgba(99, 102, 241, 0.4);
+        transform: translateX(5px);
+      }
+
+      .how-step-item.active {
+        background: var(--white);
+        border-color: var(--primary);
+        box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.15);
+      }
+
+      .how-step-number {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--border);
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 0.95rem;
+        flex-shrink: 0;
+        transition: all 0.3s;
+      }
+
+      .how-step-item.active .how-step-number {
+        background: linear-gradient(135deg, var(--primary), #a855f7);
+        color: white;
+        box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+      }
+
+      .how-step-content h3 {
+        font-size: 1.15rem;
+        font-weight: 800;
+        margin-bottom: 0.35rem;
+        color: var(--dark);
+        transition: color 0.3s;
+      }
+
+      .how-step-item.active .how-step-content h3 {
+        color: var(--primary);
+      }
+
+      .how-step-content p {
+        color: var(--text-muted);
+        font-size: 0.88rem;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      /* Right Side Interactive Showcase Panel */
+      .how-showcase {
+        position: sticky;
+        top: 120px;
+        background: #0f172a;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+        height: 480px;
+        overflow: hidden;
+        box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3), 0 0 50px rgba(99, 102, 241, 0.15);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .showcase-header {
+        background: rgba(255, 255, 255, 0.02);
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .showcase-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+
+      .showcase-dot.red { background: #ef4444; }
+      .showcase-dot.yellow { background: #eab308; }
+      .showcase-dot.green { background: #22c55e; }
+
+      .showcase-title {
+        color: #94a3b8;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .showcase-body {
+        position: relative;
+        flex-grow: 1;
+        padding: 2rem;
+      }
+
+      .showcase-screen {
+        position: absolute;
+        inset: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        opacity: 0;
+        transform: translateY(15px);
+        pointer-events: none;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .showcase-screen.active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      /* Screens Design Details */
+      .upload-container {
+        border: 2px dashed rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.01);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .upload-file-row {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        padding: 0.75rem 1rem;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        color: white;
+        font-size: 0.85rem;
+      }
+
+      .training-map {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .training-node {
+        background: rgba(99, 102, 241, 0.05);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        padding: 0.75rem 1rem;
+        border-radius: 10px;
+        color: #a5b4fc;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .mini-training-bar {
+        height: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 0.25rem 0;
+      }
+
+      .mini-training-progress {
+        height: 100%;
+        background: linear-gradient(90deg, var(--primary), #a855f7);
+        width: 85%;
+        border-radius: 4px;
+        animation: progressSim 3s infinite linear;
+      }
+
+      @keyframes progressSim {
+        0% { width: 10%; }
+        50% { width: 95%; }
+        100% { width: 10%; }
+      }
+
+      .embed-box {
+        background: #020617;
+        padding: 1.5rem;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .chat-box-showcase {
+        background: #1e293b;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        overflow: hidden;
+      }
+
+      .chat-box-showcase .chat-header {
+        background: rgba(0, 0, 0, 0.1);
+        padding: 0.75rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .chat-box-showcase .chat-bot-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary), #a855f7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 0.8rem;
+      }
+
+      .chat-box-showcase .chat-bot-name {
+        color: #ffffff;
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .chat-box-showcase .chat-messages {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        overflow-y: auto;
+        flex-grow: 1;
+        font-size: 0.8rem;
+      }
+
+      .chat-box-showcase .message {
+        display: flex;
+      }
+
+      .chat-box-showcase .message.incoming {
+        justify-content: flex-start;
+      }
+
+      .chat-box-showcase .message.outgoing {
+        justify-content: flex-end;
+      }
+
+      .chat-box-showcase .message .bubble {
+        max-width: 80%;
+        padding: 0.75rem 1rem;
+        border-radius: 12px;
+        line-height: 1.4;
+      }
+
+      .chat-box-showcase .message.incoming .bubble {
+        background: rgba(255, 255, 255, 0.05);
+        color: #e2e8f0;
+        border-top-left-radius: 2px;
+      }
+
+      .chat-box-showcase .message.outgoing .bubble {
+        background: var(--primary);
+        color: #ffffff;
+        border-top-right-radius: 2px;
+      }
+
+      .ticket-dashboard-row {
+        background: rgba(245, 158, 11, 0.05);
+        border: 1px solid rgba(245, 158, 11, 0.15);
+        padding: 1.25rem;
+        border-radius: 12px;
+        color: white;
+      }
+
+      .agent-panel-row {
+        background: rgba(16, 185, 129, 0.05);
+        border: 1px solid rgba(16, 185, 129, 0.15);
+        padding: 1rem;
+        border-radius: 12px;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .agent-panel-row .mini-agent-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #10b981;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      @media (max-width: 1024px) {
+        .how-container {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+        .how-showcase {
+          position: static;
+          height: auto;
+          min-height: 380px;
+        }
+      }
+
+      /* Key Benefits Section (Dark Theme) */
+      .benefits-section {
+        padding: 8rem 8%;
+        background-color: #0b0f19;
+        color: white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .benefits-section::before {
+        content: '';
+        position: absolute;
+        top: -10%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+        pointer-events: none;
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+        max-width: 1300px;
+        margin: 4rem auto 0;
+      }
+
+      .benefit-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 24px;
+        padding: 3rem 2.25rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        text-align: left;
+      }
+
+      .benefit-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(255, 255, 255, 0.15);
+      }
+
+      /* Specific glow effects on card hover */
+      .benefit-card.b-1:hover { box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.2); border-color: rgba(99, 102, 241, 0.4); }
+      .benefit-card.b-2:hover { box-shadow: 0 20px 40px -15px rgba(168, 85, 247, 0.2); border-color: rgba(168, 85, 247, 0.4); }
+      .benefit-card.b-3:hover { box-shadow: 0 20px 40px -15px rgba(245, 158, 11, 0.2); border-color: rgba(245, 158, 11, 0.4); }
+      .benefit-card.b-4:hover { box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.2); border-color: rgba(16, 185, 129, 0.4); }
+      .benefit-card.b-5:hover { box-shadow: 0 20px 40px -15px rgba(56, 189, 248, 0.2); border-color: rgba(56, 189, 248, 0.4); }
+      .benefit-card.b-6:hover { box-shadow: 0 20px 40px -15px rgba(244, 63, 94, 0.2); border-color: rgba(244, 63, 94, 0.4); }
+
+      .benefit-icon-wrapper {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .benefit-card.b-1 .benefit-icon-wrapper { background: rgba(99, 102, 241, 0.1); color: #818cf8; }
+      .benefit-card.b-2 .benefit-icon-wrapper { background: rgba(168, 85, 247, 0.1); color: #c084fc; }
+      .benefit-card.b-3 .benefit-icon-wrapper { background: rgba(245, 158, 11, 0.1); color: #fbbf24; }
+      .benefit-card.b-4 .benefit-icon-wrapper { background: rgba(16, 185, 129, 0.1); color: #34d399; }
+      .benefit-card.b-5 .benefit-icon-wrapper { background: rgba(56, 189, 248, 0.1); color: #38bdf8; }
+      .benefit-card.b-6 .benefit-icon-wrapper { background: rgba(244, 63, 94, 0.1); color: #fb7185; }
+
+      .benefit-card h3 {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: white;
+        margin: 0;
+      }
+
+      .benefit-card p {
+        color: #94a3b8;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      @media (max-width: 1024px) {
+        .benefits-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .benefits-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+      }
+
+      /* Section 6: Dashboard Showcase */
+      .showcase-section {
+        padding: 8rem 8%;
+        background-color: var(--light-bg);
+        border-bottom: 1px solid var(--border);
+        text-align: center;
+      }
+
+      .showcase-tabs-container {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 3rem 0;
+        flex-wrap: wrap;
+      }
+
+      .showcase-tab-btn {
+        padding: 0.85rem 1.75rem;
+        border-radius: 12px;
+        font-weight: 700;
+        border: 1px solid var(--border);
+        background: var(--white);
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+      }
+
+      .showcase-tab-btn:hover {
+        color: var(--primary);
+        border-color: rgba(99, 102, 241, 0.3);
+      }
+
+      .showcase-tab-btn.active {
+        background: linear-gradient(135deg, var(--primary), #a855f7);
+        color: white;
+        border: none;
+        box-shadow: 0 8px 20px rgba(99, 102, 241, 0.25);
+      }
+
+      .showcase-display-wrapper {
+        display: grid;
+        grid-template-columns: 1.3fr 0.7fr;
+        gap: 4rem;
+        max-width: 1300px;
+        margin: 0 auto;
+        align-items: center;
+        text-align: left;
+      }
+
+      .showcase-window {
+        background: #0f172a;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .window-header {
+        background: #1e293b;
+        padding: 0.75rem 1.25rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .window-image-container {
+        position: relative;
+        background: #090d16;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        overflow: hidden;
+      }
+
+      .window-screenshot {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transform: scale(1.02);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .window-screenshot.active {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .showcase-details-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .showcase-features-list {
+        display: none;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .showcase-features-list.active {
+        display: flex;
+        animation: showcaseFadeIn 0.4s ease;
+      }
+
+      .showcase-feature-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .showcase-feature-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        background: rgba(99, 102, 241, 0.08);
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .showcase-feature-text h4 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 0.25rem;
+      }
+
+      .showcase-feature-text p {
+        color: var(--text-muted);
+        font-size: 0.88rem;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      @keyframes showcaseFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .showcase-display-wrapper {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+        .showcase-details-panel {
+          text-align: center;
+        }
+        .showcase-feature-item {
+          text-align: left;
+        }
+      }
+
+      /* Section 7: Who Is It For? */
+      .target-audience-section {
+        padding: 8rem 8%;
+        background-color: var(--white);
+        border-bottom: 1px solid var(--border);
+        text-align: center;
+      }
+
+      .audience-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2.25rem;
+        max-width: 1300px;
+        margin: 4rem auto 0;
+      }
+
+      .audience-card {
+        background: var(--light-bg);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 3rem 2rem;
+        text-align: left;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+
+      .audience-card:hover {
+        transform: translateY(-5px);
+        background: var(--white);
+      }
+
+      /* Hover glow effects matching audience category */
+      .audience-card.a-saas:hover { border-color: #6366f1; box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.12); }
+      .audience-card.a-startups:hover { border-color: #a855f7; box-shadow: 0 20px 40px -15px rgba(168, 85, 247, 0.12); }
+      .audience-card.a-ecommerce:hover { border-color: #10b981; box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.12); }
+      .audience-card.a-internal:hover { border-color: #38bdf8; box-shadow: 0 20px 40px -15px rgba(56, 189, 248, 0.12); }
+
+      .audience-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .audience-card.a-saas .audience-icon { background: rgba(99, 102, 241, 0.08); color: #6366f1; }
+      .audience-card.a-startups .audience-icon { background: rgba(16, 185, 129, 0.08); color: #a855f7; }
+      .audience-card.a-ecommerce .audience-icon { background: rgba(16, 185, 129, 0.08); color: #10b981; }
+      .audience-card.a-internal .audience-icon { background: rgba(56, 189, 248, 0.08); color: #38bdf8; }
+
+      .audience-card h3 {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: var(--dark);
+        margin: 0;
+      }
+
+      .audience-card p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      @media (max-width: 1024px) {
+        .audience-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .audience-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+      }
+
+      /* Section 8: Why Choose Us (Comparison) */
+      .comparison-section {
+        padding: 8rem 8%;
+        background-color: var(--light-bg);
+        border-bottom: 1px solid var(--border);
+        text-align: center;
+      }
+
+      .table-container {
+        max-width: 900px;
+        margin: 4rem auto 0;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+      }
+
+      .comp-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+      }
+
+      .comp-table th, .comp-table td {
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid var(--border);
+        vertical-align: middle;
+      }
+
+      .comp-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .comp-table th {
+        font-weight: 800;
+        font-size: 1.1rem;
+        color: var(--dark);
+        background: #f1f5f9;
+      }
+
+      .comp-table td.feature-name {
+        font-weight: 700;
+        color: var(--dark);
+        width: 40%;
+      }
+
+      .comp-table td.feature-name span {
+        display: block;
+        font-weight: 500;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-top: 0.25rem;
+      }
+
+      .comp-table td.col-us {
+        background: rgba(99, 102, 241, 0.02);
+        font-weight: 700;
+        text-align: center;
+        width: 30%;
+        border-left: 1px solid rgba(99, 102, 241, 0.1);
+        border-right: 1px solid rgba(99, 102, 241, 0.1);
+      }
+
+      .comp-table th.col-us {
+        background: rgba(99, 102, 241, 0.06) !important;
+        color: var(--primary);
+        text-align: center;
+      }
+
+      .comp-table td.col-them {
+        text-align: center;
+        width: 30%;
+        color: var(--text-muted);
+      }
+
+      /* Icons */
+      .icon-check {
+        color: #10b981;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        background: rgba(16, 185, 129, 0.1);
+        border-radius: 50%;
+      }
+
+      .icon-cross {
+        color: #ef4444;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        background: rgba(239, 68, 68, 0.1);
+        border-radius: 50%;
+      }
+
+      @media (max-width: 640px) {
+        .comp-table th, .comp-table td {
+          padding: 1rem;
+          font-size: 0.85rem;
+        }
+        .comp-table td.feature-name span {
+          display: none;
+        }
+      }
+
+      /* Section 9: Pricing */
+      .pricing-section {
+        padding: 8rem 8%;
+        background-color: var(--white);
+        border-bottom: 1px solid var(--border);
+        text-align: center;
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+        max-width: 1200px;
+        margin: 4rem auto 0;
+        align-items: stretch;
+      }
+
+      .pricing-card {
+        background: var(--light-bg);
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        padding: 3.5rem 2.5rem;
+        text-align: left;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Highlighted card (Growth) */
+      .pricing-card.popular {
+        background: var(--white);
+        border-color: var(--primary);
+        box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.15);
+      }
+
+      .pricing-card.popular::before {
+        content: 'POPULAR';
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        background: linear-gradient(135deg, var(--primary), #a855f7);
+        color: white;
+        padding: 0.35rem 0.85rem;
+        font-size: 0.7rem;
+        font-weight: 800;
+        border-radius: 100px;
+        letter-spacing: 0.05em;
+      }
+
+      .pricing-header h3 {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+      }
+
+      .pricing-header p {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 2rem;
+      }
+
+      .pricing-price {
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: baseline;
+      }
+
+      .pricing-price span {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        margin-left: 0.5rem;
+      }
+
+      .pricing-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 3rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .pricing-features li {
+        font-size: 0.95rem;
+        color: var(--text-main);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .pricing-features li svg {
+        color: var(--primary);
+        flex-shrink: 0;
+      }
+
+      .pricing-card.popular .pricing-features li svg {
+        color: #a855f7;
+      }
+
+      .pricing-btn {
+        margin-top: auto;
+        width: 100%;
+        text-align: center;
+      }
+
+      @media (max-width: 1024px) {
+        .pricing-grid {
+          grid-template-columns: 1fr;
+          max-width: 500px;
+          gap: 2rem;
+        }
+      }
+
+      /* Section 10: FAQ */
+      .faq-section {
+        padding: 8rem 8%;
+        background-color: #0b0f19;
+        color: white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .faq-section::before {
+        content: '';
+        position: absolute;
+        bottom: -10%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(168, 85, 247, 0.06) 0%, transparent 70%);
+        pointer-events: none;
+      }
+
+      .faq-container {
+        max-width: 800px;
+        margin: 4rem auto 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+
+      .faq-item {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .faq-item:hover {
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(99, 102, 241, 0.3);
+        box-shadow: 0 10px 25px -10px rgba(99, 102, 241, 0.15);
+      }
+
+      .faq-item.active {
+        background: rgba(255, 255, 255, 0.03);
+        border-color: rgba(99, 102, 241, 0.5);
+        box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.2);
+      }
+
+      .faq-question {
+        padding: 1.5rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: white;
+        transition: color 0.3s ease;
+      }
+
+      .faq-question:hover {
+        color: #a5b4fc;
+      }
+
+      .faq-item.active .faq-question {
+        color: #a5b4fc;
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
+        padding: 0 2rem;
+        color: #94a3b8;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 500px;
+        padding: 0 2rem 1.5rem 2rem;
+      }
+
+      .faq-icon {
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        color: #6366f1;
+        flex-shrink: 0;
+      }
+
+      .faq-item.active .faq-icon {
+        transform: rotate(180deg);
+        color: #a855f7;
+      }
+
+      /* Section 11: Final CTA */
+      .final-cta-section {
+        padding: 8rem 8%;
+        background-color: var(--white);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .cta-wrapper {
+        max-width: 1100px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+        padding: 6rem 4rem;
+        border-radius: 32px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.3);
+        color: white;
+      }
+
+      .cta-wrapper::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 55%),
+                    radial-gradient(circle, rgba(168, 85, 247, 0.15) 50%, transparent 100%);
+        pointer-events: none;
+      }
+
+      .cta-wrapper h2 {
+        font-size: 2.75rem;
+        font-weight: 800;
+        line-height: 1.25;
+        margin-bottom: 1.5rem;
+        color: white;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-wrapper p {
+        font-size: 1.25rem;
+        color: #cbd5e1;
+        max-width: 650px;
+        margin: 0 auto 3rem auto;
+        line-height: 1.6;
+      }
+
+      .cta-btn-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .cta-subtext {
+        margin-top: 2rem;
+        font-size: 0.85rem;
+        color: #64748b;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .cta-subtext span {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .cta-subtext span svg {
+        color: #10b981;
+      }
+
+      @media (max-width: 768px) {
+        .cta-wrapper {
+          padding: 4rem 2rem;
+          border-radius: 24px;
+        }
+        .cta-wrapper h2 {
+          font-size: 2rem;
+        }
+        .cta-wrapper p {
+          font-size: 1.1rem;
+          margin-bottom: 2rem;
+        }
+      }
+
+      /* Footer */
+      .site-footer {
+        background-color: #090d16;
+        color: #94a3b8;
+        padding: 6rem 8% 3rem 8%;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        font-size: 0.9rem;
+      }
+
+      .footer-grid {
+        max-width: 1300px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr 1.5fr;
+        gap: 4rem;
+        padding-bottom: 4rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .footer-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .footer-brand-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+        color: white;
+        font-weight: 800;
+        font-size: 1.2rem;
+      }
+
+      .footer-brand-tagline {
+        color: #64748b;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .footer-socials {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .footer-social-link {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #cbd5e1;
+        transition: all 0.3s ease;
+      }
+
+      .footer-social-link:hover {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+        transform: translateY(-3px);
+      }
+
+      .footer-column h4 {
+        color: white;
+        font-weight: 700;
+        font-size: 0.95rem;
+        margin: 0 0 1.5rem 0;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+
+      .footer-links a {
+        color: #94a3b8;
+        text-decoration: none;
+        transition: color 0.3s ease, padding-left 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: white;
+        padding-left: 4px;
+      }
+
+      .footer-newsletter {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+
+      .footer-newsletter h4 {
+        color: white;
+        font-weight: 700;
+        font-size: 0.95rem;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .footer-newsletter p {
+        color: #64748b;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .newsletter-form {
+        display: flex;
+        gap: 0.5rem;
+        position: relative;
+      }
+
+      .newsletter-input {
+        flex-grow: 1;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 0.75rem 1rem;
+        border-radius: 10px;
+        color: white;
+        font-size: 0.85rem;
+        outline: none;
+        transition: all 0.3s ease;
+      }
+
+      .newsletter-input:focus {
+        border-color: var(--primary);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .newsletter-btn {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 0.75rem 1.25rem;
+        border-radius: 10px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .newsletter-btn:hover {
+        background: #4f46e5;
+      }
+
+      .footer-bottom {
+        max-width: 1300px;
+        margin: 2.5rem auto 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        color: #64748b;
+        font-size: 0.85rem;
+      }
+
+      .footer-bottom-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .footer-bottom-links a {
+        color: #64748b;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-bottom-links a:hover {
+        color: white;
+      }
+
+      @media (max-width: 1024px) {
+        .footer-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 3rem;
+        }
+        .footer-newsletter {
+          grid-column: span 3;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .site-footer {
+          padding: 4rem 8% 2rem 8%;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+        .footer-newsletter {
+          grid-column: span 1;
+        }
+        .footer-bottom {
+          flex-direction: column-reverse;
+          text-align: center;
+        }
+        .footer-bottom-links {
+          justify-content: center;
+          gap: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="#" class="logo-container">
+        <img src="/logo.png" alt="SupportConnectAI Logo" style="width: 32px; height: 32px; border-radius: 8px; object-fit: cover;" />
+        <div class="logo-text">SupportConnectAI</div>
+      </a>
+      <div class="nav-links">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#showcase">Tour</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="/login" class="btn btn-secondary nav-signin" style="padding: 0.5rem 1.25rem;">Sign In</a>
+        <a href="/register" class="btn btn-primary nav-getstarted" style="padding: 0.5rem 1.25rem;">Get Started</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-grid">
+        <!-- Left Side Text and CTAs -->
+        <div class="hero-text-content">
+          <div class="badge">AI Support Agent</div>
+          <h1>AI Customer Support That Learns Your Business</h1>
+          <p>Upload documents, FAQs, and support content. Let AI answer customer questions instantly and automatically create tickets when human support is needed.</p>
+          <div class="hero-ctas">
+            <a href="/register" class="btn btn-primary">Start Free Trial</a>
+            <a href="#demo" class="btn btn-secondary">Watch Demo</a>
+          </div>
+        </div>
+
+        <!-- Right Side Visual Workflow Diagram -->
+        <div class="workflow-visual">
+          <div class="workflow-card">
+            <!-- Title -->
+            <div style="text-align: center; margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 0.75rem;">
+              <h3 style="color: white; font-size: 1rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;">Automated Ticket Flow</h3>
+            </div>
+
+            <!-- Step 1: Company Documents -->
+            <div class="workflow-step" id="step-docs">
+              <div class="step-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+              </div>
+              <div class="step-details">
+                <h4>Company Documents</h4>
+                <p>Knowledge base ingestion (PDFs, FAQs, URL links)</p>
+              </div>
+            </div>
+
+            <!-- Connector -->
+            <div class="workflow-connector">
+              <div class="connector-line"></div>
+              <div class="connector-arrow"></div>
+            </div>
+
+            <!-- Step 2: AI Support Agent -->
+            <div class="workflow-step active" id="step-ai">
+              <div class="step-icon ai-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+              </div>
+              <div class="step-details">
+                <h4>AI Support Agent</h4>
+                <p>Ingests business rules and context semantic map</p>
+              </div>
+              <div class="chat-bubble-popup">
+                <span class="pulse-dot"></span>
+                "Learned!"
+              </div>
+            </div>
+
+            <!-- Connector -->
+            <div class="workflow-connector">
+              <div class="connector-line"></div>
+              <div class="connector-arrow"></div>
+            </div>
+
+            <!-- Step 3: Customer Question -->
+            <div class="workflow-step" id="step-question">
+              <div class="step-icon question-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </div>
+              <div class="step-details">
+                <h4>Customer Question</h4>
+                <p>AI scans ingestion and drafts/delivers instant replies</p>
+              </div>
+            </div>
+
+            <!-- Connector (Branching) -->
+            <div class="workflow-connector option-connector">
+              <div class="connector-line branch-line"></div>
+              <div class="connector-text">If unresolved</div>
+            </div>
+
+            <!-- Step 4: Ticket (if needed) -->
+            <div class="workflow-step fallback-step" id="step-ticket">
+              <div class="step-icon ticket-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </div>
+              <div class="step-details">
+                <h4>Ticket (if needed)</h4>
+                <p>Context and chat history sent to support ticketing desk</p>
+              </div>
+            </div>
+
+            <!-- Connector -->
+            <div class="workflow-connector">
+              <div class="connector-line"></div>
+              <div class="connector-arrow"></div>
+            </div>
+
+            <!-- Step 5: Agent Resolution -->
+            <div class="workflow-step resolution-step" id="step-agent">
+              <div class="step-icon agent-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                </svg>
+              </div>
+              <div class="step-details">
+                <h4>Agent Resolution</h4>
+                <p>Human agent takes over smoothly and solves issue</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: The Problem -->
+    <section class="problem-section" id="problem">
+      <div class="section-header">
+        <div class="badge" style="background: rgba(244, 63, 94, 0.1); color: #f43f5e; margin-bottom: 1.5rem;">The Challenge</div>
+        <h2>Customer Support Becomes Hard as You Grow</h2>
+        <p style="margin: 0 auto; max-width: 600px; font-size: 1.1rem; color: var(--text-muted);">Traditional customer support models scale linearly with headcount, creating massive operational bottlenecks as your user base expands.</p>
+      </div>
+
+      <div class="problem-grid">
+        <!-- Problem 1: Rising Support Costs -->
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23"></line>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <h3>Rising Support Costs</h3>
+          <p>Hiring more support agents is expensive. Scaling your human support team linearly with your user base is financially unsustainable.</p>
+        </div>
+
+        <!-- Problem 2: Slow Response Times -->
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <h3>Slow Response Times</h3>
+          <p>Customers expect instant answers. Delays in support response lead to drop-offs, lower satisfaction, and support queue overloads.</p>
+        </div>
+
+        <!-- Problem 3: Lost Customers -->
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <line x1="17" y1="8" x2="23" y2="14"></line>
+              <line x1="23" y1="8" x2="17" y2="14"></line>
+            </svg>
+          </div>
+          <h3>Lost Customers</h3>
+          <p>Unanswered questions lead to frustration and churn. If customers cannot find immediate answers, they will switch to competitors.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: How It Works -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="section-header">
+        <div class="badge" style="margin-bottom: 1.5rem;">How It Works</div>
+        <h2>Six Simple Steps to Automate Your Support</h2>
+        <p style="margin: 0 auto; max-width: 600px; font-size: 1.1rem; color: var(--text-muted);">From document ingestion to automatic ticket handoffs, SupportConnectAI works in sync with your business workflows.</p>
+      </div>
+
+      <div class="how-container">
+        <!-- Left Side: Interactive Steps List -->
+        <div class="how-steps-list">
+          <!-- Step 1: Upload Knowledge -->
+          <div class="how-step-item active" data-step="1">
+            <div class="how-step-number">1</div>
+            <div class="how-step-content">
+              <h3>Upload Knowledge</h3>
+              <p>Upload files like PDFs, FAQs, Documentation, Policies, and Help Center Articles directly to your knowledge base.</p>
+            </div>
+          </div>
+
+          <!-- Step 2: Train Your AI -->
+          <div class="how-step-item" data-step="2">
+            <div class="how-step-number">2</div>
+            <div class="how-step-content">
+              <h3>Train Your AI</h3>
+              <p>Our machine learning engine parses your business-specific information to understand pricing, shipping, and technical guidelines.</p>
+            </div>
+          </div>
+
+          <!-- Step 3: Customers Ask Questions -->
+          <div class="how-step-item" data-step="3">
+            <div class="how-step-number">3</div>
+            <div class="how-step-content">
+              <h3>Customers Ask Questions</h3>
+              <p>Embed the widget into any website or application in minutes. Customers can chat in real time right from your website.</p>
+            </div>
+          </div>
+
+          <!-- Step 4: AI Answers Instantly -->
+          <div class="how-step-item" data-step="4">
+            <div class="how-step-number">4</div>
+            <div class="how-step-content">
+              <h3>AI Answers Instantly</h3>
+              <p>Customers receive precise responses 24/7. No queues, no waiting, and no human agent intervention required for common tasks.</p>
+            </div>
+          </div>
+
+          <!-- Step 5: Automatic Ticket Escalation -->
+          <div class="how-step-item" data-step="5">
+            <div class="how-step-number">5</div>
+            <div class="how-step-content">
+              <h3>Automatic Ticket Escalation</h3>
+              <p>If the AI agent cannot answer a complex or high-priority question, a support ticket is automatically created in your dashboard.</p>
+            </div>
+          </div>
+
+          <!-- Step 6: Agent Takes Over -->
+          <div class="how-step-item" data-step="6">
+            <div class="how-step-number">6</div>
+            <div class="how-step-content">
+              <h3>Agent Takes Over</h3>
+              <p>Your support agents receive the auto-escalated ticket with full conversation context and continue the chat to resolve the issue.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Sticky Visual Showcase -->
+        <div class="how-showcase">
+          <div class="showcase-header">
+            <div class="showcase-dot red"></div>
+            <div class="showcase-dot yellow"></div>
+            <div class="showcase-dot green"></div>
+            <div class="showcase-title" id="showcase-current-step">Step 1: Upload Knowledge</div>
+          </div>
+          <div class="showcase-body">
+            <!-- Screen 1: Upload Knowledge -->
+            <div class="showcase-screen active" id="screen-1">
+              <h4 style="color: white; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;">Knowledge Base File Ingestion</h4>
+              <div class="upload-container">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <p style="color: #94a3b8; font-size: 0.8rem; margin: 0.5rem 0 0;">Drag and drop files to ingest</p>
+              </div>
+              <div class="upload-file-row">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+                <span>Refund-Policy.pdf</span>
+                <span style="margin-left: auto; color: #10b981; font-weight: 700;">100% Ingested</span>
+              </div>
+              <div class="upload-file-row">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+                <span>Product-FAQ.docx</span>
+                <span style="margin-left: auto; color: #10b981; font-weight: 700;">100% Ingested</span>
+              </div>
+            </div>
+
+            <!-- Screen 2: Train Your AI -->
+            <div class="showcase-screen" id="screen-2">
+              <h4 style="color: white; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;">AI Vector Mapping</h4>
+              <div class="training-map">
+                <div class="training-node">
+                  <span class="pulse-dot" style="background:#818cf8;"></span>
+                  <span>Ingested: 24 articles, 12 PDF manuals</span>
+                </div>
+                <div class="training-node">
+                  <span class="pulse-dot" style="background:#a78bfa;"></span>
+                  <span>Generating semantic vector dimensions...</span>
+                </div>
+                <div class="training-node">
+                  <span class="pulse-dot" style="background:#34d399;"></span>
+                  <span>Training complete! Model mapping optimized.</span>
+                </div>
+                <div class="mini-training-bar" style="margin-top: 1.5rem;">
+                  <div class="mini-training-progress"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screen 3: Customers Ask Questions -->
+            <div class="showcase-screen" id="screen-3">
+              <h4 style="color: white; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;">Embed Chat Widget</h4>
+              <p style="color: #94a3b8; font-size: 0.8rem; margin: 0;">Copy and paste this script tag into the HTML head to load SupportConnectAI Widget instantly.</p>
+              <div class="embed-box">
+                <pre style="margin: 0; color: #38bdf8; font-size: 0.72rem; font-family: monospace;">&lt;script 
+  src="https://supportconnect.ai/widget.js" 
+  data-api-key="636b3b3e-b90b"&gt;
+&lt;/script&gt;</pre>
+              </div>
+            </div>
+
+            <!-- Screen 4: AI Answers Instantly -->
+            <div class="showcase-screen" id="screen-4">
+              <h4 style="color: white; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;">Instant AI Resolution (24/7)</h4>
+              <div class="chat-box-showcase" style="height: 280px;">
+                <div class="chat-header">
+                  <div class="chat-bot-avatar">AI</div>
+                  <div>
+                    <div class="chat-bot-name">SupportConnectAI Bot</div>
+                    <div style="font-size: 0.65rem; color: #10b981;">Online & Active</div>
+                  </div>
+                </div>
+                <div class="chat-messages">
+                  <div class="message incoming">
+                    <div class="bubble">Can I cancel my membership within 14 days?</div>
+                  </div>
+                  <div class="message outgoing">
+                    <div class="bubble">Yes. Under section 3 of our Refund Policy, subscriptions cancelled within 14 days are eligible for a full refund. Let me know if you want me to cancel it.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screen 5: Automatic Ticket Escalation -->
+            <div class="showcase-screen" id="screen-5">
+              <h4 style="color: white; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;">Automated Desk Escalation</h4>
+              <div class="ticket-dashboard-row">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; align-items: center;">
+                  <span style="font-weight: 800; font-size: 0.8rem; color: #f59e0b;">TICKET AUTOMATICALLY DRAFTED</span>
+                  <span style="font-size: 0.65rem; background: rgba(245, 158, 11, 0.2); padding: 0.15rem 0.5rem; border-radius: 4px; color: #f59e0b; font-weight: 700;">Unresolved</span>
+                </div>
+                <p style="font-size: 0.8rem; color: #e2e8f0; margin-bottom: 1rem; line-height: 1.4;">"I want a custom enterprise service level agreement (SLA) for 500 accounts. What is the process?"</p>
+                <div style="font-size: 0.7rem; color: #94a3b8; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 0.5rem;">
+                  <span>Chat Session #4928</span> • <span>Severity: High</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screen 6: Agent Takes Over -->
+            <div class="showcase-screen" id="screen-6">
+              <h4 style="color: white; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;">Human Agent Panel Handoff</h4>
+              <div class="agent-panel-row">
+                <div class="mini-agent-avatar">JD</div>
+                <div>
+                  <h4 style="font-size: 0.85rem; color: white; margin: 0; font-weight: 700;">Jane Doe (Support Lead)</h4>
+                  <p style="font-size: 0.7rem; color: #10b981; margin: 0 !important; font-weight: 500;">Joined conversation #4928</p>
+                </div>
+              </div>
+              <div class="chat-box-showcase" style="height: 160px; margin-top: 0.5rem;">
+                <div class="chat-messages" style="padding: 0.75rem;">
+                  <div class="message outgoing">
+                    <div class="bubble" style="background:#10b981;">Hi! I'm Jane Doe. I have reviewed your request for the custom 500+ accounts SLA contract. I can send you the contract draft directly.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    </section>
+
+    <!-- Section 5: Key Benefits -->
+    <section class="benefits-section" id="benefits">
+      <div class="section-header">
+        <div class="badge" style="background: rgba(99, 102, 241, 0.15); color: #818cf8; margin-bottom: 1.5rem;">Key Benefits</div>
+        <h2 style="color: white;">Supercharge Customer Satisfaction and Operations</h2>
+        <p style="margin: 0 auto; max-width: 600px; font-size: 1.1rem; color: #94a3b8;">Discover how SupportConnectAI optimizes workflows, lowers support costs, and guarantees security at scale.</p>
+      </div>
+
+      <div class="benefits-grid">
+        <!-- Benefit 1: 24/7 Customer Support -->
+        <div class="benefit-card b-1">
+          <div class="benefit-icon-wrapper">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <h3>24/7 Customer Support</h3>
+          <p>Answer questions anytime. Give your customers instant, accurate answers around the clock, even on weekends and holidays.</p>
+        </div>
+
+        <!-- Benefit 2: Reduce Agent Workload -->
+        <div class="benefit-card b-2">
+          <div class="benefit-icon-wrapper">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+          </div>
+          <h3>Reduce Agent Workload</h3>
+          <p>Handle repetitive requests automatically. Deflect up to 90% of common support tickets, freeing agents for deep troubleshooting.</p>
+        </div>
+
+        <!-- Benefit 3: Never Lose Complex Cases -->
+        <div class="benefit-card b-3">
+          <div class="benefit-icon-wrapper">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 22 22 22"></polygon>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+          </div>
+          <h3>Never Lose Complex Cases</h3>
+          <p>Automatically escalate difficult questions. Hand off complex questions to human support with full session histories preserved.</p>
+        </div>
+
+        <!-- Benefit 4: Multi-Tenant Organizations -->
+        <div class="benefit-card b-4">
+          <div class="benefit-icon-wrapper">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+              <line x1="6" y1="6" x2="6.01" y2="6"></line>
+              <line x1="6" y1="18" x2="6.01" y2="18"></line>
+            </svg>
+          </div>
+          <h3>Multi-Tenant Organizations</h3>
+          <p>Separate workspaces for every company. Manage separate environments, branding, and permissions for multiple departments or brands.</p>
+        </div>
+
+        <!-- Benefit 5: Secure Data Isolation -->
+        <div class="benefit-card b-5">
+          <div class="benefit-icon-wrapper">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <h3>Secure Data Isolation</h3>
+          <p>Organization-specific knowledge and support data. Ensure complete data privacy with strict sandbox separation of knowledge stores.</p>
+        </div>
+
+        <!-- Benefit 6: Quick Integration -->
+        <div class="benefit-card b-6">
+          <div class="benefit-icon-wrapper">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <h3>Quick Integration</h3>
+          <p>Simple widget installation. Go live in minutes by placing a single line of script code into any CMS, web app, or site builder.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Dashboard Showcase -->
+    <section class="showcase-section" id="showcase">
+      <div class="section-header">
+        <div class="badge" style="margin-bottom: 1.5rem;">Platform Tour</div>
+        <h2>Explore the SupportConnectAI Platform</h2>
+        <p style="margin: 0 auto; max-width: 600px; font-size: 1.1rem; color: var(--text-muted);">Take a closer look at the interfaces designed for management, automation setup, and human support agents.</p>
+      </div>
+
+      <!-- Tab Buttons -->
+      <div class="showcase-tabs-container">
+        <button class="showcase-tab-btn active" data-tab="org">Organization Dashboard</button>
+        <button class="showcase-tab-btn" data-tab="kb">AI Knowledge Base</button>
+        <button class="showcase-tab-btn" data-tab="workspace">Agent Workspace</button>
+      </div>
+
+      <!-- Main Display -->
+      <div class="showcase-display-wrapper">
+        <!-- Mockup Browser Window -->
+        <div class="showcase-window">
+          <div class="window-header">
+            <div class="showcase-dot red"></div>
+            <div class="showcase-dot yellow"></div>
+            <div class="showcase-dot green"></div>
+            <div style="margin-left: auto; color: #64748b; font-size: 0.75rem; font-weight: 600; font-family: monospace;">app.supportconnect.ai</div>
+            <div style="margin-left: auto; width: 30px;"></div>
+          </div>
+          <div class="window-image-container">
+            <img src="/org_dashboard.png" class="window-screenshot active" id="img-org" alt="Organization Dashboard Screenshot" />
+            <img src="/knowledge_base.png" class="window-screenshot" id="img-kb" alt="AI Knowledge Base Screenshot" />
+            <img src="/agent_workspace.png" class="window-screenshot" id="img-workspace" alt="Agent Workspace Screenshot" />
+          </div>
+        </div>
+
+        <!-- Details Panel -->
+        <div class="showcase-details-panel">
+          <!-- Org Dashboard Details -->
+          <div class="showcase-features-list active" id="details-org">
+            <div style="margin-bottom: 0.5rem;">
+              <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem;">Organization Dashboard</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Track support health, automation performance, and overall satisfaction rate from a central hub.</p>
+            </div>
+            <div class="showcase-feature-item">
+              <div class="showcase-feature-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+              </div>
+              <div class="showcase-feature-text">
+                <h4>Automation Resolution Rate</h4>
+                <p>Observe the percentage of incoming queries successfully answered and deflected by AI without human intervention.</p>
+              </div>
+            </div>
+            <div class="showcase-feature-item">
+              <div class="showcase-feature-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div class="showcase-feature-text">
+                <h4>Active Chat Sessions & Metrics</h4>
+                <p>Monitor live concurrent conversations happening in real time on your website, handled in parallel by the AI.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Knowledge Base Details -->
+          <div class="showcase-features-list" id="details-kb">
+            <div style="margin-bottom: 0.5rem;">
+              <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem;">AI Knowledge Base</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Easily manage and audit the documents, URLs, and FAQs that train your custom AI support agents.</p>
+            </div>
+            <div class="showcase-feature-item">
+              <div class="showcase-feature-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              </div>
+              <div class="showcase-feature-text">
+                <h4>Document Ingestion & File Formats</h4>
+                <p>Upload PDF manuals, policy guides, help center FAQs, or scrape entire public website links in seconds.</p>
+              </div>
+            </div>
+            <div class="showcase-feature-item">
+              <div class="showcase-feature-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="showcase-feature-text">
+                <h4>Strict Sandbox Separation</h4>
+                <p>Your uploaded documents are securely isolated per workspace, ensuring no crossing of support information.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agent Workspace Details -->
+          <div class="showcase-features-list" id="details-workspace">
+            <div style="margin-bottom: 0.5rem;">
+              <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem;">Agent Workspace</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Equip support reps with the tools to take over automated threads, review chat records, and manage tickets.</p>
+            </div>
+            <div class="showcase-feature-item">
+              <div class="showcase-feature-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              </div>
+              <div class="showcase-feature-text">
+                <h4>Live Conversation Control & Assigned Tickets</h4>
+                <p>Human support agents can view the active AI chat thread and take over control instantly with a single button press.</p>
+              </div>
+            </div>
+            <div class="showcase-feature-item">
+              <div class="showcase-feature-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </div>
+              <div class="showcase-feature-text">
+                <h4>Internal Session Notes & Messages</h4>
+                <p>Rep support agents can draft internal session notes, tag specific tickets, and review AI summaries of active customer threads.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Who Is It For? -->
+    <section class="target-audience-section" id="target-audience">
+      <div class="section-header">
+        <div class="badge" style="margin-bottom: 1.5rem;">Who Is It For?</div>
+        <h2>Designed to Scale Across Every Industry</h2>
+        <p style="margin: 0 auto; max-width: 600px; font-size: 1.1rem; color: var(--text-muted);">SupportConnectAI easily adapts to your unique customer support needs and business constraints.</p>
+      </div>
+
+      <div class="audience-grid">
+        <!-- Card 1: SaaS Companies -->
+        <div class="audience-card a-saas">
+          <div class="audience-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+            </svg>
+          </div>
+          <h3>SaaS Companies</h3>
+          <p>Reduce support workload. Automate API inquiries, recurring service setups, billing requests, and user onboarding flows.</p>
+        </div>
+
+        <!-- Card 2: Startups -->
+        <div class="audience-card a-startups">
+          <div class="audience-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 22 22 22"></polygon>
+            </svg>
+          </div>
+          <h3>Startups</h3>
+          <p>Provide support without hiring large teams. Keep operating costs low while delivering instant 24/7 support from day one.</p>
+        </div>
+
+        <!-- Card 3: E-commerce -->
+        <div class="audience-card a-ecommerce">
+          <div class="audience-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+          </div>
+          <h3>E-commerce</h3>
+          <p>Handle product and order questions. Assist customers with sizing, refund policies, package delivery tracking, and order updates.</p>
+        </div>
+
+        <!-- Card 4: Internal Business Tools -->
+        <div class="audience-card a-internal">
+          <div class="audience-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="9" y1="3" x2="9" y2="21"></line>
+            </svg>
+          </div>
+          <h3>Internal Business Tools</h3>
+          <p>Support employees and customers. Ingest internal handbooks, HR protocols, tech wikis, or product documents to help team members find answers instantly.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: Why Choose Us (Comparison Table) -->
+    <section class="comparison-section" id="comparison">
+      <div class="section-header">
+        <div class="badge" style="margin-bottom: 1.5rem;">Why Choose Us?</div>
+        <h2>See How We Compare to Traditional Support</h2>
+        <p style="margin: 0 auto; max-width: 600px; font-size: 1.1rem; color: var(--text-muted);">Compare features, support channels, and agent handoff mechanics between platforms.</p>
+      </div>
+
+      <div class="table-container">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="col-us">SupportConnectAI</th>
+              <th class="col-them">Traditional Support</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Row 1: Instant Answers -->
+            <tr>
+              <td class="feature-name">
+                Instant Answers
+                <span>Deliver replies in under 1 second 24/7.</span>
+              </td>
+              <td class="col-us">
+                <span class="icon-check">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+              </td>
+              <td class="col-them">
+                <span class="icon-cross">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </span>
+              </td>
+            </tr>
+
+            <!-- Row 2: Company Knowledge Training -->
+            <tr>
+              <td class="feature-name">
+                Company Knowledge Training
+                <span>AI learns from uploaded PDFs, docs, and URLs.</span>
+              </td>
+              <td class="col-us">
+                <span class="icon-check">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+              </td>
+              <td class="col-them">
+                <span class="icon-cross">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </span>
+              </td>
+            </tr>
+
+            <!-- Row 3: Human Escalation -->
+            <tr>
+              <td class="feature-name">
+                Human Escalation
+                <span>Handoff unresolved tickets seamlessly.</span>
+              </td>
+              <td class="col-us">
+                <span class="icon-check">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+              </td>
+              <td class="col-them">
+                <span class="icon-check">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+              </td>
+            </tr>
+
+            <!-- Row 4: Ticket Management -->
+            <tr>
+              <td class="feature-name">
+                Ticket Management
+                <span>Create, edit, and audit support tickets.</span>
+              </td>
+              <td class="col-us">
+                <span class="icon-check">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+              </td>
+              <td class="col-them">
+                <span class="icon-check">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+              </td>
+            </tr>
+
+            <!-- Row 5: Agent Workspace -->
+            <tr>
+              <td class="feature-name">
+                Agent Workspace
+                <span>Provide support reps with thread inboxes and notes.</span>
+              </td>
+              <td class="col-us">
+                <span class="icon-check">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+              </td>
+              <td class="col-them">
+                <span class="icon-check">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    </section>
+
+    <!-- Section 9: Pricing -->
+    <section class="pricing-section" id="pricing">
+      <div class="section-header">
+        <div class="badge" style="margin-bottom: 1.5rem;">Pricing Plans</div>
+        <h2>Simple Plans for Businesses of All Sizes</h2>
+        <p style="margin: 0 auto; max-width: 600px; font-size: 1.1rem; color: var(--text-muted);">Get started for free, no credit card required. Upgrade as your support grows.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Tier 1: Starter -->
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Starter</h3>
+            <p>For small businesses getting started with automated support.</p>
+          </div>
+          <div class="pricing-price">
+            ₹2,499<span>/ month</span>
+          </div>
+          <ul class="pricing-features">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Basic AI Agent resolution
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Upload up to 10 documents
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              500 replies / month
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Email support
+            </li>
+          </ul>
+          <a href="/register?plan=starter" class="btn btn-secondary pricing-btn">Start Free Trial</a>
+        </div>
+
+        <!-- Tier 2: Growth -->
+        <div class="pricing-card popular">
+          <div class="pricing-header">
+            <h3>Growth</h3>
+            <p>For growing teams seeking to deflect repetitive requests.</p>
+          </div>
+          <div class="pricing-price">
+            ₹7,999<span>/ month</span>
+          </div>
+          <ul class="pricing-features">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Advanced AI Agent resolution
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Upload up to 100 documents
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              5,000 replies / month
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Slack & email support
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Advanced analytics desk
+            </li>
+          </ul>
+          <a href="/register?plan=growth" class="btn btn-primary pricing-btn">Start Free Trial</a>
+        </div>
+
+        <!-- Tier 3: Enterprise -->
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Enterprise</h3>
+            <p>For organizations requiring custom training and high volumes.</p>
+          </div>
+          <div class="pricing-price">
+            Custom
+          </div>
+          <ul class="pricing-features">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Custom model training & SLAs
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Unlimited document uploads
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Unlimited AI replies / month
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Dedicated support manager
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Organization data isolation
+            </li>
+          </ul>
+          <a href="mailto:sales@supportconnect.ai?subject=Enterprise%20Plan%20Inquiry" class="btn btn-secondary pricing-btn">Contact Sales</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 10: FAQ -->
+    <section class="faq-section" id="faq">
+      <div class="section-header" style="text-align: center;">
+        <div class="badge" style="margin-bottom: 1.5rem; background: rgba(168, 85, 247, 0.1); color: #c084fc;">FAQ</div>
+        <h2>Frequently Asked Questions</h2>
+        <p style="margin: 0 auto; max-width: 600px; font-size: 1.1rem; color: #94a3b8;">Have questions about how SupportConnectAI fits into your workflows? Here are answers to common questions.</p>
+      </div>
+
+      <div class="faq-container">
+        <!-- Question 1 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How does the AI learn?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <div class="faq-answer">
+            SupportConnectAI learns by ingesting documents you upload (like PDFs, DOCX, TXT), scraping public documentation or FAQ URLs, or direct manual entries. Our specialized embedding model processes these resources in real-time to build a custom semantic knowledge base specific to your company guidelines and brand voice.
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What document types are supported?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <div class="faq-answer">
+            We support a wide variety of documentation formats including PDF manuals, Help Center articles, FAQs, policy sheets, text files, and Markdown. You can also paste direct website links to automatically crawl and import pages.
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Can I customize the widget?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <div class="faq-answer">
+            Absolutely. You can customize the widget theme colors, bot avatar, header titles, welcome messages, placeholder text, and initial prompt buttons to align perfectly with your brand style guidelines.
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What happens when AI cannot answer?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <div class="faq-answer">
+            When the AI encounters a question outside its knowledge base or if the confidence score drops below your set threshold, it instantly prompts the customer to create a support ticket. The system captures the full chat transcript and automatically notifies your team in the Agent Workspace.
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How are tickets assigned?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <div class="faq-answer">
+            Tickets are automatically generated in the Agent Workspace with full AI-summarized context. They can be auto-assigned to support reps based on custom routing rules, department tags (e.g., Billing, Technical), or claimed manually by agents in the live queue.
+          </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Is organization data isolated?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <div class="faq-answer">
+            Yes, security is a core pillar. SupportConnectAI is built on a strict multi-tenant architecture. All uploaded files, crawled URLs, and chat logs are compartmentalized within organization-specific sandbox databases. Your business data is never shared across organizations or used for training public models.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 11: Final CTA -->
+    <section class="final-cta-section" id="final-cta">
+      <div class="cta-wrapper">
+        <h2>Deliver Instant Support Without Losing Human Touch</h2>
+        <p>Train AI on your business knowledge and let your support team focus on what matters most.</p>
+        <div class="cta-btn-group">
+          <a href="/register" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);">Start Free Trial</a>
+        </div>
+        <div class="cta-subtext">
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            No credit card required
+          </span>
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            14-day free trial
+          </span>
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Setup in 5 minutes
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <a href="#" class="footer-brand-logo">
+            <img src="/logo.png" alt="SupportConnectAI Logo" style="width: 32px; height: 32px; border-radius: 8px; object-fit: cover;" />
+            <span>SupportConnectAI</span>
+          </a>
+          <p class="footer-brand-tagline">AI-powered customer support that deflects tickets, assists agents, and answers customer queries instantly using custom brand intelligence.</p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-link" aria-label="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 1: Product -->
+        <div class="footer-column">
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="#features">Platform Features</a></li>
+            <li><a href="#pricing">Pricing Plans</a></li>
+            <li><a href="#showcase">Dashboard Tour</a></li>
+            <li><a href="#comparison">Compare Us</a></li>
+            <li><a href="#faq">Frequently Asked FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Resources -->
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="#">Knowledge Base Docs</a></li>
+            <li><a href="#">Widget Customizer Guide</a></li>
+            <li><a href="#">System Integrations</a></li>
+            <li><a href="#">API Documentation</a></li>
+            <li><a href="#">Platform Live Status</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Trust & Info -->
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="#">About SupportConnectAI</a></li>
+            <li><a href="#">Careers & Culture</a></li>
+            <li><a href="#">Security Audits (SOC2)</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Newsletter -->
+        <div class="footer-newsletter">
+          <h4>Keep Up To Date</h4>
+          <p>Get notified about new features, model updates, and customer support strategies.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!'); this.reset();">
+            <input type="email" class="newsletter-input" placeholder="you@company.com" required aria-label="Email address" />
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 SupportConnectAI Inc. All rights reserved.
+        </div>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy policy</a>
+          <a href="#">Terms of use</a>
+          <a href="#">Security sandboxing</a>
+          <a href="#">Cookie settings</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Widget Launcher -->
+    <button id="my-chat-icon" aria-label="Open support chat">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a4 4 0 01-4 4H8l-5 3V7a4 4 0 014-4h10a4 4 0 014 4v8z" />
+      </svg>
+    </button>
+
+    <script
+      src="/widget-loader.js"
+      data-api-key="636b3b3e-b90b-450d-b7f7-bf2438985a55"
+      data-launcher-id="my-chat-icon"
+    ></script>
+
+    <script>
+      // How It Works Interactive Showcase Script
+      document.addEventListener("DOMContentLoaded", () => {
+        const stepItems = document.querySelectorAll(".how-step-item");
+        const showcaseScreens = document.querySelectorAll(".showcase-screen");
+        const showcaseTitle = document.getElementById("showcase-current-step");
+
+        stepItems.forEach(item => {
+          item.addEventListener("click", () => {
+            const stepNum = item.getAttribute("data-step");
+            const stepTitleText = item.querySelector("h3").innerText;
+
+            // Deactivate all steps & screens
+            stepItems.forEach(i => i.classList.remove("active"));
+            showcaseScreens.forEach(s => s.classList.remove("active"));
+
+            // Activate current step & screen
+            item.classList.add("active");
+            document.getElementById(`screen-${stepNum}`).classList.add("active");
+
+            // Update Header Title
+            showcaseTitle.innerText = `Step ${stepNum}: ${stepTitleText}`;
+          });
+        });
+
+        // Dashboard Showcase Interactive Tabs
+        const showcaseTabBtns = document.querySelectorAll(".showcase-tab-btn");
+        const windowScreenshots = document.querySelectorAll(".window-screenshot");
+        const showcaseFeatureLists = document.querySelectorAll(".showcase-features-list");
+
+        showcaseTabBtns.forEach(btn => {
+          btn.addEventListener("click", () => {
+            const tabName = btn.getAttribute("data-tab");
+
+            // Deactivate all
+            showcaseTabBtns.forEach(b => b.classList.remove("active"));
+            windowScreenshots.forEach(s => s.classList.remove("active"));
+            showcaseFeatureLists.forEach(f => f.classList.remove("active"));
+
+            // Activate selected
+            btn.classList.add("active");
+            document.getElementById(`img-${tabName}`).classList.add("active");
+            document.getElementById(`details-${tabName}`).classList.add("active");
+          });
+        });
+
+        // FAQ Accordion Toggle
+        const faqItems = document.querySelectorAll(".faq-item");
+        faqItems.forEach(item => {
+          const question = item.querySelector(".faq-question");
+          question.addEventListener("click", () => {
+            const isActive = item.classList.contains("active");
+            
+            // Close other FAQ items for a clean accordion effect
+            faqItems.forEach(otherItem => otherItem.classList.remove("active"));
+            
+            if (!isActive) {
+              item.classList.add("active");
+            }
+          });
+        });
+
+        // Check auth status and update landing page CTAs dynamically based on the application state
+        const checkAuth = () => {
+          try {
+            const authStorage = localStorage.getItem("auth-storage");
+            if (authStorage) {
+              const { state } = JSON.parse(authStorage);
+              if (state && state.isAuthenticated && state.token) {
+                // Update Nav Link buttons
+                const signinBtn = document.querySelector(".nav-signin");
+                const getstartedBtn = document.querySelector(".nav-getstarted");
+                if (signinBtn) signinBtn.remove();
+                if (getstartedBtn) {
+                  getstartedBtn.innerText = "Go to Dashboard";
+                  getstartedBtn.setAttribute("href", "/company");
+                }
+                
+                // Update Hero CTAs
+                const heroRegister = document.querySelector(".hero-ctas .btn-primary");
+                if (heroRegister) {
+                  heroRegister.innerText = "Go to Dashboard";
+                  heroRegister.setAttribute("href", "/company");
+                }
+
+                // Update Final CTA
+                const finalRegister = document.querySelector(".cta-btn-group .btn-primary");
+                if (finalRegister) {
+                  finalRegister.innerText = "Go to Dashboard";
+                  finalRegister.setAttribute("href", "/company");
+                }
+              }
+            }
+          } catch (e) {
+            console.error("Error reading auth storage:", e);
+          }
+        };
+        checkAuth();
+      });
+    </script>
+  </body>
+</html>

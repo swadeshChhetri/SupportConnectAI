@@ -61,8 +61,13 @@ export default function Sidebar() {
   return (
     <aside className="fixed left-0 top-0 w-64 h-full bg-white border-r border-gray-200 shadow-sm">
       {/* Branding */}
-      <div className="h-16 px-6 flex items-center border-b border-gray-200">
-        <h1 className="text-lg font-bold">AI Support</h1>
+      <div className="h-16 px-6 flex items-center gap-3 border-b border-gray-200">
+        <img
+          src="/logo.png"
+          alt="SupportConnectAI Logo"
+          className="w-8 h-8 rounded-lg object-cover"
+        />
+        <h1 className="text-lg font-bold">SupportConnectAI</h1>
       </div>
 
       {/* User */}

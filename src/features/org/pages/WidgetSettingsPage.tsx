@@ -24,7 +24,7 @@ export default function WidgetSettingsPage() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
           <h1 className="text-3xl font-black text-gray-900 tracking-tight mb-2">Chat Widget</h1>
-          <p className="text-sm font-bold text-gray-500 uppercase tracking-widest">Connect SupportHub to your website</p>
+          <p className="text-sm font-bold text-gray-500 uppercase tracking-widest">Connect SupportConnectAI to your website</p>
         </div>
         
         <div className="flex items-center gap-3">
