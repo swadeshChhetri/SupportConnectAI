@@ -117,8 +117,10 @@
         transition: all 0.3s ease;
         font-size: 0.95rem;
         text-decoration: none;
-        font-display: white;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
       }
 
       .btn-primary {
@@ -1127,6 +1129,10 @@
         cursor: pointer;
         transition: all 0.3s ease;
         font-size: 0.95rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
       }
 
       .showcase-tab-btn:hover {
@@ -1279,34 +1285,51 @@
 
       .audience-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2.25rem;
-        max-width: 1300px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+        max-width: 1200px;
         margin: 4rem auto 0;
       }
 
       .audience-card {
-        background: var(--light-bg);
+        background: linear-gradient(135deg, var(--white) 0%, var(--light-bg) 100%);
         border: 1px solid var(--border);
-        border-radius: 24px;
-        padding: 3rem 2rem;
+        border-top: 4px solid var(--border);
+        border-radius: 20px;
+        padding: 3.5rem 3rem;
         text-align: left;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         flex-direction: column;
-        gap: 1.25rem;
+        gap: 1.5rem;
+        position: relative;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.006);
       }
 
+      /* Base top borders by theme */
+      .audience-card.a-saas { border-top-color: #6366f1; }
+      .audience-card.a-startups { border-top-color: #a855f7; }
+      .audience-card.a-ecommerce { border-top-color: #10b981; }
+      .audience-card.a-internal { border-top-color: #38bdf8; }
+
       .audience-card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-6px);
         background: var(--white);
+        box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
       }
 
       /* Hover glow effects matching audience category */
-      .audience-card.a-saas:hover { border-color: #6366f1; box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.12); }
-      .audience-card.a-startups:hover { border-color: #a855f7; box-shadow: 0 20px 40px -15px rgba(168, 85, 247, 0.12); }
-      .audience-card.a-ecommerce:hover { border-color: #10b981; box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.12); }
-      .audience-card.a-internal:hover { border-color: #38bdf8; box-shadow: 0 20px 40px -15px rgba(56, 189, 248, 0.12); }
+      .audience-card.a-saas:hover { border-color: #6366f1; box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.15); }
+      .audience-card.a-startups:hover { border-color: #a855f7; box-shadow: 0 20px 40px -15px rgba(168, 85, 247, 0.15); }
+      .audience-card.a-ecommerce:hover { border-color: #10b981; box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.15); }
+      .audience-card.a-internal:hover { border-color: #38bdf8; box-shadow: 0 20px 40px -15px rgba(56, 189, 248, 0.15); }
+
+      .audience-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
 
       .audience-icon {
         width: 52px;
@@ -1319,22 +1342,65 @@
       }
 
       .audience-card.a-saas .audience-icon { background: rgba(99, 102, 241, 0.08); color: #6366f1; }
-      .audience-card.a-startups .audience-icon { background: rgba(16, 185, 129, 0.08); color: #a855f7; }
+      .audience-card.a-startups .audience-icon { background: rgba(168, 85, 247, 0.08); color: #a855f7; }
       .audience-card.a-ecommerce .audience-icon { background: rgba(16, 185, 129, 0.08); color: #10b981; }
       .audience-card.a-internal .audience-icon { background: rgba(56, 189, 248, 0.08); color: #38bdf8; }
 
+      .audience-badge {
+        padding: 0.35rem 0.75rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        border-radius: 100px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .audience-card.a-saas .audience-badge { background: rgba(99, 102, 241, 0.06); color: #6366f1; }
+      .audience-card.a-startups .audience-badge { background: rgba(168, 85, 247, 0.06); color: #a855f7; }
+      .audience-card.a-ecommerce .audience-badge { background: rgba(16, 185, 129, 0.06); color: #10b981; }
+      .audience-card.a-internal .audience-badge { background: rgba(56, 189, 248, 0.06); color: #38bdf8; }
+
       .audience-card h3 {
-        font-size: 1.25rem;
+        font-size: 1.4rem;
         font-weight: 800;
         color: var(--dark);
-        margin: 0;
+        margin: 0.25rem 0 0;
       }
 
       .audience-card p {
         color: var(--text-muted);
-        font-size: 0.95rem;
-        line-height: 1.5;
+        font-size: 1rem;
+        line-height: 1.6;
         margin: 0;
+      }
+
+      .audience-footer {
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.88rem;
+        font-weight: 700;
+        transition: color 0.3s ease;
+      }
+
+      .audience-card.a-saas .audience-footer { color: var(--text-muted); }
+      .audience-card.a-saas:hover .audience-footer { color: #6366f1; }
+
+      .audience-card.a-startups .audience-footer { color: var(--text-muted); }
+      .audience-card.a-startups:hover .audience-footer { color: #a855f7; }
+
+      .audience-card.a-ecommerce .audience-footer { color: var(--text-muted); }
+      .audience-card.a-ecommerce:hover .audience-footer { color: #10b981; }
+
+      .audience-card.a-internal .audience-footer { color: var(--text-muted); }
+      .audience-card.a-internal:hover .audience-footer { color: #38bdf8; }
+
+      .audience-footer svg {
+        transition: transform 0.3s ease;
+      }
+      .audience-card:hover .audience-footer svg {
+        transform: translateX(4px);
       }
 
       @media (max-width: 1024px) {
@@ -1344,10 +1410,13 @@
         }
       }
 
-      @media (max-width: 640px) {
+      @media (max-width: 768px) {
         .audience-grid {
           grid-template-columns: 1fr;
           gap: 1.5rem;
+        }
+        .audience-card {
+          padding: 2.5rem 2rem;
         }
       }
 
@@ -1791,7 +1860,7 @@
         max-width: 1300px;
         margin: 0 auto;
         display: grid;
-        grid-template-columns: 1.5fr 1fr 1fr 1fr 1.5fr;
+        grid-template-columns: 1.5fr 1fr 1.5fr;
         gap: 4rem;
         padding-bottom: 4rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -1926,6 +1995,10 @@
         font-weight: 700;
         cursor: pointer;
         transition: background 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
       }
 
       .newsletter-btn:hover {
@@ -1961,11 +2034,11 @@
 
       @media (max-width: 1024px) {
         .footer-grid {
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: 1.2fr 1fr;
           gap: 3rem;
         }
         .footer-newsletter {
-          grid-column: span 3;
+          grid-column: span 2;
         }
       }
 
@@ -1989,6 +2062,43 @@
           gap: 1.5rem;
         }
       }
+
+      /* Scroll Reveal Animations (progressive enhancement) */
+      .js-enabled .reveal-fade-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+
+      .js-enabled .reveal-fade-down {
+        opacity: 0;
+        transform: translateY(-30px);
+        transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+
+      .js-enabled .reveal-active {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+
+      /* Staggered reveal effect when parent gets activated */
+      .js-enabled .reveal-stagger > * {
+        opacity: 0;
+        transform: translateY(35px);
+        transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+
+      .js-enabled .reveal-stagger.reveal-active > * {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .js-enabled .reveal-stagger.reveal-active > *:nth-child(1) { transition-delay: 0.05s; }
+      .js-enabled .reveal-stagger.reveal-active > *:nth-child(2) { transition-delay: 0.15s; }
+      .js-enabled .reveal-stagger.reveal-active > *:nth-child(3) { transition-delay: 0.25s; }
+      .js-enabled .reveal-stagger.reveal-active > *:nth-child(4) { transition-delay: 0.35s; }
+      .js-enabled .reveal-stagger.reveal-active > *:nth-child(5) { transition-delay: 0.45s; }
+      .js-enabled .reveal-stagger.reveal-active > *:nth-child(6) { transition-delay: 0.55s; }
     </style>
   </head>
   <body>
@@ -2003,8 +2113,14 @@
         <a href="#showcase">Tour</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
-        <a href="/login" class="btn btn-secondary nav-signin" style="padding: 0.5rem 1.25rem;">Sign In</a>
-        <a href="/register" class="btn btn-primary nav-getstarted" style="padding: 0.5rem 1.25rem;">Get Started</a>
+        <a href="/login" class="btn btn-secondary nav-signin" style="padding: 0.5rem 1.25rem;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+          Sign In
+        </a>
+        <a href="/register" class="btn btn-primary nav-getstarted" style="padding: 0.5rem 1.25rem;">
+          Get Started
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
       </div>
     </nav>
 
@@ -2012,18 +2128,24 @@
     <section class="hero">
       <div class="hero-grid">
         <!-- Left Side Text and CTAs -->
-        <div class="hero-text-content">
+        <div class="hero-text-content reveal-fade-up">
           <div class="badge">AI Support Agent</div>
           <h1>AI Customer Support That Learns Your Business</h1>
           <p>Upload documents, FAQs, and support content. Let AI answer customer questions instantly and automatically create tickets when human support is needed.</p>
           <div class="hero-ctas">
-            <a href="/register" class="btn btn-primary">Start Free Trial</a>
-            <a href="#demo" class="btn btn-secondary">Watch Demo</a>
+            <a href="/register" class="btn btn-primary">
+              Start Free Trial
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="#demo" class="btn btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              Watch Demo
+            </a>
           </div>
         </div>
 
         <!-- Right Side Visual Workflow Diagram -->
-        <div class="workflow-visual">
+        <div class="workflow-visual reveal-fade-down">
           <div class="workflow-card">
             <!-- Title -->
             <div style="text-align: center; margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 0.75rem;">
@@ -2138,13 +2260,13 @@
 
     <!-- Section 2: The Problem -->
     <section class="problem-section" id="problem">
-      <div class="section-header">
+      <div class="section-header reveal-fade-down">
         <div class="badge" style="background: rgba(244, 63, 94, 0.1); color: #f43f5e; margin-bottom: 1.5rem;">The Challenge</div>
         <h2>Customer Support Becomes Hard as You Grow</h2>
         <p style="margin: 0 auto; max-width: 600px; font-size: 1.1rem; color: var(--text-muted);">Traditional customer support models scale linearly with headcount, creating massive operational bottlenecks as your user base expands.</p>
       </div>
 
-      <div class="problem-grid">
+      <div class="problem-grid reveal-stagger">
         <!-- Problem 1: Rising Support Costs -->
         <div class="problem-card">
           <div class="problem-icon">
@@ -2187,7 +2309,7 @@
 
     <!-- Section 3: How It Works -->
     <section class="how-it-works" id="how-it-works">
-      <div class="section-header">
+      <div class="section-header reveal-fade-down">
         <div class="badge" style="margin-bottom: 1.5rem;">How It Works</div>
         <h2>Six Simple Steps to Automate Your Support</h2>
         <p style="margin: 0 auto; max-width: 600px; font-size: 1.1rem; color: var(--text-muted);">From document ingestion to automatic ticket handoffs, SupportConnectAI works in sync with your business workflows.</p>
@@ -2195,7 +2317,7 @@
 
       <div class="how-container">
         <!-- Left Side: Interactive Steps List -->
-        <div class="how-steps-list">
+        <div class="how-steps-list reveal-stagger">
           <!-- Step 1: Upload Knowledge -->
           <div class="how-step-item active" data-step="1">
             <div class="how-step-number">1</div>
@@ -2252,7 +2374,7 @@
         </div>
 
         <!-- Right Side: Sticky Visual Showcase -->
-        <div class="how-showcase">
+        <div class="how-showcase reveal-fade-up">
           <div class="showcase-header">
             <div class="showcase-dot red"></div>
             <div class="showcase-dot yellow"></div>
@@ -2387,13 +2509,13 @@
 
     <!-- Section 5: Key Benefits -->
     <section class="benefits-section" id="benefits">
-      <div class="section-header">
+      <div class="section-header reveal-fade-down">
         <div class="badge" style="background: rgba(99, 102, 241, 0.15); color: #818cf8; margin-bottom: 1.5rem;">Key Benefits</div>
         <h2 style="color: white;">Supercharge Customer Satisfaction and Operations</h2>
         <p style="margin: 0 auto; max-width: 600px; font-size: 1.1rem; color: #94a3b8;">Discover how SupportConnectAI optimizes workflows, lowers support costs, and guarantees security at scale.</p>
       </div>
 
-      <div class="benefits-grid">
+      <div class="benefits-grid reveal-stagger">
         <!-- Benefit 1: 24/7 Customer Support -->
         <div class="benefit-card b-1">
           <div class="benefit-icon-wrapper">
@@ -2471,21 +2593,30 @@
 
     <!-- Section 6: Dashboard Showcase -->
     <section class="showcase-section" id="showcase">
-      <div class="section-header">
+      <div class="section-header reveal-fade-down">
         <div class="badge" style="margin-bottom: 1.5rem;">Platform Tour</div>
         <h2>Explore the SupportConnectAI Platform</h2>
         <p style="margin: 0 auto; max-width: 600px; font-size: 1.1rem; color: var(--text-muted);">Take a closer look at the interfaces designed for management, automation setup, and human support agents.</p>
       </div>
 
       <!-- Tab Buttons -->
-      <div class="showcase-tabs-container">
-        <button class="showcase-tab-btn active" data-tab="org">Organization Dashboard</button>
-        <button class="showcase-tab-btn" data-tab="kb">AI Knowledge Base</button>
-        <button class="showcase-tab-btn" data-tab="workspace">Agent Workspace</button>
+      <div class="showcase-tabs-container reveal-fade-up">
+        <button class="showcase-tab-btn active" data-tab="org">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+          Organization Dashboard
+        </button>
+        <button class="showcase-tab-btn" data-tab="kb">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          AI Knowledge Base
+        </button>
+        <button class="showcase-tab-btn" data-tab="workspace">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          Agent Workspace
+        </button>
       </div>
 
       <!-- Main Display -->
-      <div class="showcase-display-wrapper">
+      <div class="showcase-display-wrapper reveal-fade-up">
         <!-- Mockup Browser Window -->
         <div class="showcase-window">
           <div class="window-header">
@@ -2587,71 +2718,99 @@
 
     <!-- Section 7: Who Is It For? -->
     <section class="target-audience-section" id="target-audience">
-      <div class="section-header">
+      <div class="section-header reveal-fade-down">
         <div class="badge" style="margin-bottom: 1.5rem;">Who Is It For?</div>
         <h2>Designed to Scale Across Every Industry</h2>
         <p style="margin: 0 auto; max-width: 600px; font-size: 1.1rem; color: var(--text-muted);">SupportConnectAI easily adapts to your unique customer support needs and business constraints.</p>
       </div>
 
-      <div class="audience-grid">
+      <div class="audience-grid reveal-stagger">
         <!-- Card 1: SaaS Companies -->
         <div class="audience-card a-saas">
-          <div class="audience-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-            </svg>
+          <div class="audience-header">
+            <div class="audience-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+              </svg>
+            </div>
+            <span class="audience-badge">SaaS & Apps</span>
           </div>
           <h3>SaaS Companies</h3>
           <p>Reduce support workload. Automate API inquiries, recurring service setups, billing requests, and user onboarding flows.</p>
+          <div class="audience-footer">
+            <span>Explore SaaS cases</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </div>
         </div>
 
         <!-- Card 2: Startups -->
         <div class="audience-card a-startups">
-          <div class="audience-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 2 22 22 22"></polygon>
-            </svg>
+          <div class="audience-header">
+            <div class="audience-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 22 22 22"></polygon>
+              </svg>
+            </div>
+            <span class="audience-badge">Early Stage</span>
           </div>
           <h3>Startups</h3>
           <p>Provide support without hiring large teams. Keep operating costs low while delivering instant 24/7 support from day one.</p>
+          <div class="audience-footer">
+            <span>Explore Startup cases</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </div>
         </div>
 
         <!-- Card 3: E-commerce -->
         <div class="audience-card a-ecommerce">
-          <div class="audience-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="9" cy="21" r="1"></circle>
-              <circle cx="20" cy="21" r="1"></circle>
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-            </svg>
+          <div class="audience-header">
+            <div class="audience-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+            </div>
+            <span class="audience-badge">Digital Retail</span>
           </div>
           <h3>E-commerce</h3>
           <p>Handle product and order questions. Assist customers with sizing, refund policies, package delivery tracking, and order updates.</p>
+          <div class="audience-footer">
+            <span>Explore Retail cases</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </div>
         </div>
 
         <!-- Card 4: Internal Business Tools -->
         <div class="audience-card a-internal">
-          <div class="audience-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="9" y1="3" x2="9" y2="21"></line>
-            </svg>
+          <div class="audience-header">
+            <div class="audience-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="9" y1="3" x2="9" y2="21"></line>
+              </svg>
+            </div>
+            <span class="audience-badge">Internal Ops</span>
           </div>
           <h3>Internal Business Tools</h3>
           <p>Support employees and customers. Ingest internal handbooks, HR protocols, tech wikis, or product documents to help team members find answers instantly.</p>
+          <div class="audience-footer">
+            <span>Explore Internal cases</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Section 8: Why Choose Us (Comparison Table) -->
     <section class="comparison-section" id="comparison">
-      <div class="section-header">
+      <div class="section-header reveal-fade-down">
         <div class="badge" style="margin-bottom: 1.5rem;">Why Choose Us?</div>
         <h2>See How We Compare to Traditional Support</h2>
         <p style="margin: 0 auto; max-width: 600px; font-size: 1.1rem; color: var(--text-muted);">Compare features, support channels, and agent handoff mechanics between platforms.</p>
       </div>
 
-      <div class="table-container">
+      <div class="table-container reveal-fade-up">
         <table class="comp-table">
           <thead>
             <tr>
@@ -2759,13 +2918,13 @@
 
     <!-- Section 9: Pricing -->
     <section class="pricing-section" id="pricing">
-      <div class="section-header">
+      <div class="section-header reveal-fade-down">
         <div class="badge" style="margin-bottom: 1.5rem;">Pricing Plans</div>
         <h2>Simple Plans for Businesses of All Sizes</h2>
         <p style="margin: 0 auto; max-width: 600px; font-size: 1.1rem; color: var(--text-muted);">Get started for free, no credit card required. Upgrade as your support grows.</p>
       </div>
 
-      <div class="pricing-grid">
+      <div class="pricing-grid reveal-stagger">
         <!-- Tier 1: Starter -->
         <div class="pricing-card">
           <div class="pricing-header">
@@ -2793,7 +2952,10 @@
               Email support
             </li>
           </ul>
-          <a href="/register?plan=starter" class="btn btn-secondary pricing-btn">Start Free Trial</a>
+          <a href="/register?plan=starter" class="btn btn-secondary pricing-btn">
+            Start Free Trial
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
         </div>
 
         <!-- Tier 2: Growth -->
@@ -2827,7 +2989,10 @@
               Advanced analytics desk
             </li>
           </ul>
-          <a href="/register?plan=growth" class="btn btn-primary pricing-btn">Start Free Trial</a>
+          <a href="/register?plan=growth" class="btn btn-primary pricing-btn">
+            Start Free Trial
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
         </div>
 
         <!-- Tier 3: Enterprise -->
@@ -2861,20 +3026,23 @@
               Organization data isolation
             </li>
           </ul>
-          <a href="mailto:sales@supportconnect.ai?subject=Enterprise%20Plan%20Inquiry" class="btn btn-secondary pricing-btn">Contact Sales</a>
+          <a href="mailto:sales@supportconnect.ai?subject=Enterprise%20Plan%20Inquiry" class="btn btn-secondary pricing-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            Contact Sales
+          </a>
         </div>
       </div>
     </section>
 
     <!-- Section 10: FAQ -->
     <section class="faq-section" id="faq">
-      <div class="section-header" style="text-align: center;">
+      <div class="section-header reveal-fade-down" style="text-align: center;">
         <div class="badge" style="margin-bottom: 1.5rem; background: rgba(168, 85, 247, 0.1); color: #c084fc;">FAQ</div>
         <h2>Frequently Asked Questions</h2>
         <p style="margin: 0 auto; max-width: 600px; font-size: 1.1rem; color: #94a3b8;">Have questions about how SupportConnectAI fits into your workflows? Here are answers to common questions.</p>
       </div>
 
-      <div class="faq-container">
+      <div class="faq-container reveal-stagger">
         <!-- Question 1 -->
         <div class="faq-item">
           <div class="faq-question">
@@ -2957,11 +3125,14 @@
 
     <!-- Section 11: Final CTA -->
     <section class="final-cta-section" id="final-cta">
-      <div class="cta-wrapper">
+      <div class="cta-wrapper reveal-fade-up">
         <h2>Deliver Instant Support Without Losing Human Touch</h2>
         <p>Train AI on your business knowledge and let your support team focus on what matters most.</p>
         <div class="cta-btn-group">
-          <a href="/register" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);">Start Free Trial</a>
+          <a href="/register" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);">
+            Start Free Trial
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
         </div>
         <div class="cta-subtext">
           <span>
@@ -3011,39 +3182,15 @@
           </div>
         </div>
 
-        <!-- Column 1: Product -->
+        <!-- Column: Navigation Links -->
         <div class="footer-column">
-          <h4>Product</h4>
+          <h4>Sitemap</h4>
           <ul class="footer-links">
-            <li><a href="#features">Platform Features</a></li>
-            <li><a href="#pricing">Pricing Plans</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#benefits">Platform Benefits</a></li>
             <li><a href="#showcase">Dashboard Tour</a></li>
-            <li><a href="#comparison">Compare Us</a></li>
+            <li><a href="#pricing">Pricing Plans</a></li>
             <li><a href="#faq">Frequently Asked FAQ</a></li>
-          </ul>
-        </div>
-
-        <!-- Column 2: Resources -->
-        <div class="footer-column">
-          <h4>Resources</h4>
-          <ul class="footer-links">
-            <li><a href="#">Knowledge Base Docs</a></li>
-            <li><a href="#">Widget Customizer Guide</a></li>
-            <li><a href="#">System Integrations</a></li>
-            <li><a href="#">API Documentation</a></li>
-            <li><a href="#">Platform Live Status</a></li>
-          </ul>
-        </div>
-
-        <!-- Column 3: Trust & Info -->
-        <div class="footer-column">
-          <h4>Company</h4>
-          <ul class="footer-links">
-            <li><a href="#">About SupportConnectAI</a></li>
-            <li><a href="#">Careers & Culture</a></li>
-            <li><a href="#">Security Audits (SOC2)</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
           </ul>
         </div>
 
@@ -3053,7 +3200,10 @@
           <p>Get notified about new features, model updates, and customer support strategies.</p>
           <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!'); this.reset();">
             <input type="email" class="newsletter-input" placeholder="you@company.com" required aria-label="Email address" />
-            <button type="submit" class="newsletter-btn" aria-label="Subscribe">Subscribe</button>
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe">
+              Subscribe
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
           </form>
         </div>
       </div>
@@ -3063,10 +3213,9 @@
           &copy; 2026 SupportConnectAI Inc. All rights reserved.
         </div>
         <div class="footer-bottom-links">
-          <a href="#">Privacy policy</a>
-          <a href="#">Terms of use</a>
-          <a href="#">Security sandboxing</a>
-          <a href="#">Cookie settings</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Settings</a>
         </div>
       </div>
     </footer>
@@ -3078,15 +3227,43 @@
       </svg>
     </button>
 
-    <script
-      src="/widget-loader.js"
-      data-api-key="636b3b3e-b90b-450d-b7f7-bf2438985a55"
-      data-launcher-id="my-chat-icon"
-    ></script>
+   <script
+  src="https://supportconnectai.vercel.app/widget-loader.js"
+  data-api-key="ef00d171-70e4-4136-94e0-bdac7e59ed47"
+></script>
+
+    
 
     <script>
       // How It Works Interactive Showcase Script
       document.addEventListener("DOMContentLoaded", () => {
+        // Enable JS-enabled styling class
+        document.documentElement.classList.add("js-enabled");
+
+        // Setup Intersection Observer for Scroll Reveal Animations
+        const observerOptions = {
+          root: null,
+          threshold: 0.05,
+          rootMargin: "0px 0px -40px 0px"
+        };
+
+        const revealCallback = (entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("reveal-active");
+              observer.unobserve(entry.target);
+            }
+          });
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, observerOptions);
+        
+        // Observe all animations
+        const animatedElements = document.querySelectorAll(
+          ".reveal-fade-up, .reveal-fade-down, .reveal-stagger"
+        );
+        animatedElements.forEach(el => revealObserver.observe(el));
+
         const stepItems = document.querySelectorAll(".how-step-item");
         const showcaseScreens = document.querySelectorAll(".showcase-screen");
         const showcaseTitle = document.getElementById("showcase-current-step");
@@ -3158,21 +3335,21 @@
                 const getstartedBtn = document.querySelector(".nav-getstarted");
                 if (signinBtn) signinBtn.remove();
                 if (getstartedBtn) {
-                  getstartedBtn.innerText = "Go to Dashboard";
+                  getstartedBtn.innerHTML = `Go to Dashboard <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>`;
                   getstartedBtn.setAttribute("href", "/company");
                 }
                 
                 // Update Hero CTAs
                 const heroRegister = document.querySelector(".hero-ctas .btn-primary");
                 if (heroRegister) {
-                  heroRegister.innerText = "Go to Dashboard";
+                  heroRegister.innerHTML = `Go to Dashboard <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>`;
                   heroRegister.setAttribute("href", "/company");
                 }
 
                 // Update Final CTA
                 const finalRegister = document.querySelector(".cta-btn-group .btn-primary");
                 if (finalRegister) {
-                  finalRegister.innerText = "Go to Dashboard";
+                  finalRegister.innerHTML = `Go to Dashboard <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>`;
                   finalRegister.setAttribute("href", "/company");
                 }
               }
