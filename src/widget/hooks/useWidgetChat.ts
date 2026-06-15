@@ -177,7 +177,7 @@ export function useWidgetChat(
         );
 
         reject(new Error("Message ACK timeout"));
-      }, 5000);
+      }, 60000);
     });
   }
 
