@@ -2,9 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import Header from "./Header";
 import MessageRenderer from "./MessageRenderer";
 import InputBar from "./InputBar";
-import {
-  MessageCircle,
-} from "lucide-react";
 import { useWidgetSession } from "../hooks/useWidgetSession";
 import { useWidgetChat } from "../hooks/useWidgetChat";
 
@@ -31,9 +28,11 @@ export default function WidgetChat() {
     messages,
     sendTextMessage,
     sendFile,
+    sendTyping,
+    isTyping,
   } = useWidgetChat(sessionId, visitorId);
 
-  // Auto-scroll to bottom on new messages
+  // Auto-scroll to bottom on new messages or when typing state changes
   useEffect(() => {
     setTimeout(() => {
       if (bodyRef.current) {
@@ -43,7 +42,7 @@ export default function WidgetChat() {
         });
       }
     }, 50);
-  }, [messages]);
+  }, [messages, isTyping]);
 
   if (sessionLoading) {
     return (
@@ -86,11 +85,16 @@ export default function WidgetChat() {
       >
         {messages.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full text-center text-white/50">
-            <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center mb-4 border border-white/10">
-              <MessageCircle className="w-6 h-6" />
+            <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-blue-500/20 to-indigo-500/20 flex items-center justify-center mb-5 border border-indigo-500/30 shadow-[0_8px_32px_rgba(99,102,241,0.15)] animate-pulse">
+              <svg className="w-8 h-8 text-indigo-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 3c-4.97 0-9 3.58-9 8 0 1.83.71 3.51 1.91 4.83L3.5 19.5c-.32.48-.05 1.13.51 1.23.1.02.2.02.3 0l3.87-1.12c1.17.61 2.49.95 3.82.95 4.97 0 9-3.58 9-8s-4.03-8-9-8z" fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
+                <circle cx="9" cy="11" r="1" fill="currentColor" />
+                <circle cx="12" cy="11" r="1" fill="currentColor" />
+                <circle cx="15" cy="11" r="1" fill="currentColor" />
+              </svg>
             </div>
-            <p className="text-base font-medium text-white">Start a Conversation</p>
-            <p className="text-xs mt-2 max-w-[200px]">Ask us anything, we're here to help.</p>
+            <p className="text-base font-semibold text-white">Start a Conversation</p>
+            <p className="text-xs mt-2 max-w-[220px] text-slate-400">Ask us anything, we're here to help.</p>
           </div>
         ) : (
           <div className="space-y-4">
@@ -100,13 +104,25 @@ export default function WidgetChat() {
                 message={m}
               />
             ))}
+            {isTyping && (
+              <MessageRenderer
+                message={{
+                  id: "typing-indicator",
+                  sessionId: sessionId || "",
+                  sender: "ai",
+                  type: "typing",
+                  text: "",
+                  createdAt: new Date().toISOString(),
+                }}
+              />
+            )}
           </div>
         )}
       </div>
 
       {/* Input Area */}
       <div className="sticky bottom-0 z-20 border-t border-white/10 bg-slate-900/80 backdrop-blur-md flex-shrink-0">
-        <InputBar onSend={sendTextMessage} onUpload={sendFile} />
+        <InputBar onSend={sendTextMessage} onUpload={sendFile} onTyping={sendTyping} />
       </div>
     </div>
   );

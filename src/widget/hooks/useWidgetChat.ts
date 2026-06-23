@@ -6,8 +6,10 @@ import {
 import {
   connectWidgetSocket,
   sendWidgetSocketMessage,
+  sendWidgetTyping,
   onWidgetMessage,
   onWidgetAck,
+  onWidgetTyping,
   disconnectWidgetSocket,
 } from "../socket/widgetSocket";
 import type { WidgetMessage } from "../types/widget";
@@ -48,7 +50,10 @@ export function useWidgetChat(
 ) {
   const { widgetApiKey } = useWidgetAuth();
   const [messages, setMessages] = useState<WidgetMessage[]>([]);
+  const [isWaitingForResponse, setIsWaitingForResponse] = useState(false);
+  const [isAgentTyping, setIsAgentTyping] = useState(false);
 
+  const agentTypingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const pendingAcks = useRef<
     Map<string, { resolve: () => void; reject: () => void }>
   >(new Map());
@@ -84,6 +89,8 @@ export function useWidgetChat(
     if (!sessionId) return;
 
     disconnectWidgetSocket();
+    setIsWaitingForResponse(false);
+    setIsAgentTyping(false);
 
     connectWidgetSocket({
       sessionId,
@@ -93,6 +100,15 @@ export function useWidgetChat(
 
     onWidgetMessage((msg: any) => {
       const normalizedMsg = normalizeMessage(msg);
+
+      // If we receive a response from AI or Agent, clear the waiting/typing loader
+      if (normalizedMsg.sender === "ai" || normalizedMsg.sender === "agent") {
+        setIsWaitingForResponse(false);
+        setIsAgentTyping(false);
+        if (agentTypingTimeoutRef.current) {
+          clearTimeout(agentTypingTimeoutRef.current);
+        }
+      }
 
       setMessages((prev) => {
         if (prev.some((m) => m.id === normalizedMsg.id)) {
@@ -126,9 +142,24 @@ export function useWidgetChat(
       setMessages((prev) => prev.filter((m) => m.id !== tempId));
     });
 
+    onWidgetTyping((data) => {
+      if (data.who === "agent" && data.sessionId === sessionId) {
+        setIsAgentTyping(true);
+        if (agentTypingTimeoutRef.current) {
+          clearTimeout(agentTypingTimeoutRef.current);
+        }
+        agentTypingTimeoutRef.current = setTimeout(() => {
+          setIsAgentTyping(false);
+        }, 4000);
+      }
+    });
+
     return () => {
       disconnectWidgetSocket();
       pendingAcks.current.clear();
+      if (agentTypingTimeoutRef.current) {
+        clearTimeout(agentTypingTimeoutRef.current);
+      }
     };
   }, [sessionId, visitorId, widgetApiKey]);
 
@@ -153,6 +184,7 @@ export function useWidgetChat(
         createdAt: new Date().toISOString(),
       },
     ]);
+    setIsWaitingForResponse(true);
 
     return new Promise((resolve, reject) => {
       pendingAcks.current.set(tempId, { resolve, reject });
@@ -167,6 +199,7 @@ export function useWidgetChat(
         if (!pendingAcks.current.has(tempId)) return;
 
         pendingAcks.current.delete(tempId);
+        setIsWaitingForResponse(false);
 
         setMessages((prev) =>
           prev.map((m) =>
@@ -204,10 +237,12 @@ export function useWidgetChat(
 
     // optimistic UI
     setMessages((prev) => [...prev, tempMessage]);
+    setIsWaitingForResponse(true);
 
     try {
       await uploadWidgetFile(sessionId, file, widgetApiKey);
     } catch (err) {
+      setIsWaitingForResponse(false);
       setMessages((prev) =>
         prev.map((m) =>
           m.id === tempId
@@ -220,9 +255,15 @@ export function useWidgetChat(
     }
   }
 
+  function sendTyping() {
+    sendWidgetTyping();
+  }
+
   return {
     messages,
     sendTextMessage,
     sendFile,
+    sendTyping,
+    isTyping: isWaitingForResponse || isAgentTyping,
   };
 }

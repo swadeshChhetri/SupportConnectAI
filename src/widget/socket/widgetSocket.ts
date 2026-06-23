@@ -105,6 +105,15 @@ export function sendWidgetSocketMessage({
 }
 
 /* -------------------- */
+/* SEND TYPING          */
+/* -------------------- */
+export function sendWidgetTyping() {
+  if (socket && socket.connected) {
+    socket.emit("typing");
+  }
+}
+
+/* -------------------- */
 /* MESSAGE RECEIVE      */
 /* -------------------- */
 export function onWidgetMessage(
@@ -124,6 +133,18 @@ export function onWidgetAck(
 
   socket.off("message:ack");
   socket.on("message:ack", callback);
+}
+
+/* -------------------- */
+/* TYPING RECEIVE       */
+/* -------------------- */
+export function onWidgetTyping(
+  callback: (data: { sessionId: string; who: "agent" | "user"; userId?: string }) => void
+) {
+  if (!socket) return;
+
+  socket.off("typing");
+  socket.on("typing", callback);
 }
 
 /* -------------------- */

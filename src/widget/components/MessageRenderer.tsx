@@ -6,17 +6,24 @@ import FileMessage from "./messages/FileMessage";
 import ListMessage from "./messages/ListMessage";
 import ButtonsMessage from "./messages/ButtonsMessage";
 import FormMessage from "./messages/FormMessage";
+import { useTheme } from "../context/ThemeContext";
 
 // Typing Indicator Component
 function TypingBubble() {
+  const { aiAvatar } = useTheme();
   return (
-    <div className="flex items-start gap-2 mb-3">
-      <div className="bg-gray-200 text-gray-600 rounded-2xl px-4 py-2 shadow-sm">
-        <div className="flex gap-1">
-          <span className="animate-bounce">●</span>
-          <span className="animate-bounce delay-150">●</span>
-          <span className="animate-bounce delay-300">●</span>
-        </div>
+    <div className="flex items-start gap-2 mb-3 justify-start">
+      {aiAvatar && (
+        <img
+          src={aiAvatar}
+          alt="AI"
+          className="w-8 h-8 rounded-full object-cover"
+        />
+      )}
+      <div className="max-w-[80%] rounded-2xl px-5 py-3 shadow-sm bg-gray-100 flex items-center gap-1.5">
+        <div className="w-2.5 h-2.5 rounded-full bg-gray-400 animate-bounce" style={{ animationDelay: "0ms" }} />
+        <div className="w-2.5 h-2.5 rounded-full bg-gray-400 animate-bounce" style={{ animationDelay: "150ms" }} />
+        <div className="w-2.5 h-2.5 rounded-full bg-gray-400 animate-bounce" style={{ animationDelay: "300ms" }} />
       </div>
     </div>
   );

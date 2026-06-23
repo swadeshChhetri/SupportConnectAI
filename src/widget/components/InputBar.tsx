@@ -4,9 +4,10 @@ import { useTheme } from "../context/ThemeContext";
 type InputBarProps = {
   onSend: (text: string) => Promise<void>;
   onUpload: (file: File) => void;
+  onTyping?: () => void;
 };
 
-export default function InputBar({ onSend, onUpload }: InputBarProps) {
+export default function InputBar({ onSend, onUpload, onTyping }: InputBarProps) {
   const { primaryColor } = useTheme();
 
   const [text, setText] = useState("");
@@ -14,6 +15,7 @@ export default function InputBar({ onSend, onUpload }: InputBarProps) {
   const [uploading, setUploading] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const lastTypedRef = useRef<number>(0);
 
   const canSend = text.trim().length > 0 && !sending;
 
@@ -94,6 +96,13 @@ export default function InputBar({ onSend, onUpload }: InputBarProps) {
             className="flex-1 resize-none bg-transparent text-sm text-white placeholder-white/40 outline-none max-h-40 py-2 scrollbar-hide"
             onChange={(e) => {
               setText(e.target.value);
+
+              // Throttle typing events to server (once every 2s)
+              const now = Date.now();
+              if (now - lastTypedRef.current > 2000) {
+                lastTypedRef.current = now;
+                onTyping?.();
+              }
 
               const el = e.target;
               el.style.height = "auto";
